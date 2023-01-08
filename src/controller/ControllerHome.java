@@ -8,7 +8,6 @@ import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import model.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,29 +15,17 @@ import java.util.ResourceBundle;
 
 public class ControllerHome implements Initializable {
     @FXML
-    Button thongKe;
+    private Button thongKe;
     @FXML
-    Button hoKhau;
+    private Button hoKhau;
     @FXML
-    Button nhanKhau;
+    private Button nhanKhau;
     @FXML
-    Button khoanThu;
+    private Button khoanThu;
     @FXML
-    Button taiKhoan;
+    private Button taiKhoan;
     @FXML
-    BorderPane mainPane;
-    static User taikhoan;
-    //Lấy thông tin tài khoản
-    public void getData(User taikhoan)//Chuyển dữ liệu taikhoan từ loginscene sang taikhoan ở homescene
-    {
-        ControllerHome.taikhoan = taikhoan;
-        System.out.println(taikhoan.getId());
-        System.out.println(taikhoan.getTenTaiKhoan());
-        System.out.println(taikhoan.getVaiTro());
-        System.out.println(taikhoan.getTenNguoiDung());
-        System.out.println(taikhoan.getNgaySinh());
-        System.out.println(taikhoan.getGioiTinh());
-    }
+    private BorderPane mainPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Khi vừa vào Scene Home thì sẽ mặc định setCenter  = Scene Thống kê
@@ -50,6 +37,7 @@ public class ControllerHome implements Initializable {
             throw new RuntimeException(e);
         }
         mainPane.setCenter(paneThongKe);
+
         //Hiệu ứng chuột khi di chuyển chuột qua các button
         thongKe.addEventHandler(MouseEvent.MOUSE_MOVED, event -> thongKe.setEffect(new SepiaTone()));
         thongKe.addEventHandler(MouseEvent.MOUSE_EXITED, event -> thongKe.setEffect(null));
