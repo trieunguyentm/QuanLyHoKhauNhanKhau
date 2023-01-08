@@ -49,7 +49,7 @@
                   </Pane>
                </graphic>
             </Button>
-            <Button fx:id="khoanThu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickKhoanThu" prefHeight="120.0" prefWidth="200.0" style="-fx-border-color: #36d5ff; -fx-border-width: 1px 2px 2px 1px; -fx-text-fill: #36d5ff; -fx-background-color: #ffffff;" text="Khoản Thu">
+            <Button fx:id="khoanThu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickKhoanThu" prefHeight="120.0" prefWidth="200.0" style="-fx-border-color: #36d5ff; -fx-border-width: 1px 2px 1px 2px; -fx-text-fill: #36d5ff; -fx-background-color: #ffffff;" text="Khoản Thu">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -61,7 +61,7 @@
                   </Pane>
                </graphic>
             </Button>
-            <Button fx:id="taiKhoan" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickTaiKhoan" prefHeight="120.0" prefWidth="200.0" style="-fx-border-color: #36d5ff; -fx-border-width: 1px 2px 2px 1px; -fx-text-fill: #36d5ff; -fx-background-color: #ffffff;" text="Tài khoản">
+            <Button fx:id="taiKhoan" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickTaiKhoan" prefHeight="120.0" prefWidth="200.0" style="-fx-border-color: #36d5ff; -fx-border-width: 1px 2px 2px 2px; -fx-text-fill: #36d5ff; -fx-background-color: #ffffff;" text="Tài khoản">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
