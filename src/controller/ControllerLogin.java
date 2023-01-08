@@ -26,15 +26,15 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
-    static User taikhoan;
+    public static User taikhoan;
     @FXML
-    TextField userLogin;
+    private TextField userLogin;
     @FXML
-    PasswordField passLogin;
+    private PasswordField passLogin;
     @FXML
-    Button buttonLogin;
+    private Button buttonLogin;
     @FXML
-    Label messageLabel;
+    private Label messageLabel;
 
     //Xử lý sự kiện khi ấn Đăng nhập
     public void clickLoginButton() throws RuntimeException {
@@ -48,6 +48,8 @@ public class ControllerLogin implements Initializable {
         }
         // Xử lý việc kiểm tra tài khoản mật khẩu có chính xác hay không
         else {
+            messageLabel.setTextFill(Paint.valueOf("YELLOW"));
+            messageLabel.setText("Đang đăng nhập...");
             //Kết nối với database
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection connection = dataBaseConnection.getConnection("sa","123456");
@@ -63,7 +65,7 @@ public class ControllerLogin implements Initializable {
                         status = true;
                         messageLabel.setTextFill(Paint.valueOf("GREEN"));
                         messageLabel.setText("Đăng nhập thành công");
-                        //Nếu đăng nhập đúng, cần lấy thông tin tài khoản để chuyển sang scene home
+                        //Nếu đăng nhập đúng, cần lấy thông tin tài khoản
                         String getDataAccount = "SELECT * FROM users WHERE userName = '" + userName + "' AND pass = '" + password +"'";
                         resultSet = statement.executeQuery(getDataAccount);
                         resultSet.next();
@@ -77,13 +79,6 @@ public class ControllerLogin implements Initializable {
 
                 if(status)//Nếu đăng nhập thành công
                 {
-                    //Lấy thông tin tài khoản, chuyển dữ liệu giữa 2 Scene
-                    //Gửi dữ liệu sang Scene Home
-                    ControllerHome controllerHome = new ControllerHome();
-                    controllerHome.getData(ControllerLogin.taikhoan);
-                    //Gửi dữ liệu sang Scene tài khoản
-                    ControllerTaiKhoan controllerTaiKhoan = new ControllerTaiKhoan();
-                    controllerTaiKhoan.getData(ControllerLogin.taikhoan);
                     //Đóng kết nối database
                     statement.close();
                     connection.close();
