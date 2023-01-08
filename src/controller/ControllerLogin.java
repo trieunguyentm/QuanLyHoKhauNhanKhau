@@ -26,6 +26,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
+    public static final String userDataBase = "sa";
+    public static final String passworDataBase = "123456";
     public static User taikhoan;
     @FXML
     private TextField userLogin;
@@ -52,7 +54,7 @@ public class ControllerLogin implements Initializable {
             messageLabel.setText("Đang đăng nhập...");
             //Kết nối với database
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
-            Connection connection = dataBaseConnection.getConnection("sa","123456");
+            Connection connection = dataBaseConnection.getConnection(userDataBase,passworDataBase);
             String verifyLogin = "SELECT count(1) FROM users WHERE userName = '" + userName + "' AND pass = '" + password +"'";
             try{
                 Statement statement = connection.createStatement();
