@@ -56,19 +56,16 @@
       <TextField fx:id="textVaiTro" editable="false" layoutX="165.0" layoutY="130.0" style="-fx-background-color: #CCCCCC;" />
       <TextField fx:id="textTenNguoiDung" layoutX="165.0" layoutY="160.0" />
       <DatePicker fx:id="textNgaySinh" layoutX="165.0" layoutY="190.0" prefHeight="26.0" prefWidth="150.0" />
-      <ComboBox fx:id="textGioiTinh" layoutX="165.0" layoutY="220.0" prefWidth="150.0" />
+      <ComboBox fx:id="textGioiTinh" editable="true" layoutX="165.0" layoutY="220.0" prefWidth="150.0" />
       <Label layoutX="329.0" layoutY="165.0" />
-      <ImageView fx:id="imageTenNguoiDung" fitHeight="10.0" fitWidth="10.0" layoutX="324.0" layoutY="169.0"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../image/pencil-alt.png"/>
+      <ImageView fx:id="imageTenNguoiDung" fitHeight="10.0" fitWidth="10.0" layoutX="324.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/pencil-alt.png" />
       </ImageView>
-      <ImageView fx:id="imageNgaySinh" fitHeight="10.0" fitWidth="10.0" layoutX="324.0" layoutY="198.0"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../image/pencil-alt.png"/>
+      <ImageView fx:id="imageNgaySinh" fitHeight="10.0" fitWidth="10.0" layoutX="324.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/pencil-alt.png" />
       </ImageView>
-      <ImageView fx:id="imageGioiTinh" fitHeight="10.0" fitWidth="10.0" layoutX="324.0" layoutY="228.0"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../image/pencil-alt.png"/>
+      <ImageView fx:id="imageGioiTinh" fitHeight="10.0" fitWidth="10.0" layoutX="324.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/pencil-alt.png" />
       </ImageView>
    </AnchorPane>
 </AnchorPane>
