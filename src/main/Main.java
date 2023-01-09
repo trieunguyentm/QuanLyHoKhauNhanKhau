@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Tạo root
+        //thien da tung o day
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/Login.fxml")));
         //Tạo scene
         Scene scene = new Scene(root, 440, 430);
