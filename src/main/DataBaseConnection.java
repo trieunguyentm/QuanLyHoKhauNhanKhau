@@ -20,7 +20,7 @@ public class DataBaseConnection {
         Connection conn;
         //Kết nối với database qua user và password
         try{
-            String urlLink = "jdbc:sqlserver://DESKTOP-QT211P8\\SQLEXPRESS;databaseName=suaDb;user=Thien;password=123;encrypt=true;trustServerCertificate=true;";
+            String urlLink = "jdbc:sqlserver://DESKTOP-QT211P8\\SQLEXPRESS;databaseName=quanlynhankhau;user=Thien;password=123;encrypt=true;trustServerCertificate=true;";
             conn = DriverManager.getConnection(urlLink);
 
         } catch (SQLException e) {
