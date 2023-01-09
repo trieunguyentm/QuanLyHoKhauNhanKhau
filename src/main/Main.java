@@ -13,6 +13,9 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         //Tạo root
         //thien da tung o day
+        DataBaseConnection conn = new DataBaseConnection();
+        //none sene
+        conn.getConnection("abc", "def");
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/Login.fxml")));
         //Tạo scene
         Scene scene = new Scene(root, 440, 430);
