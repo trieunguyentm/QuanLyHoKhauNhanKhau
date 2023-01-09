@@ -114,6 +114,9 @@ public class ControllerTaiKhoan implements Initializable {
             updateAlert.setContentText("Thay đổi thông tin thành công");
             updateAlert.setHeaderText(null);
             updateAlert.showAndWait();
+            //Ngắt kết nối database
+            statement.close();
+            connection.close();
         }
     }
 }
