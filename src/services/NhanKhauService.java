@@ -56,6 +56,7 @@ public class NhanKhauService{
 		String query2 = "update nhan_khau set ghiChu = 'da chet' where maNhanKhau = " + baotu.getMaNguoiChet() ;
 		Statement stm = connection.createStatement();
 		stm.executeUpdate(query2);
+
         //get ma ho cua nguoi bi chet
         String maHo = null;
         String getMaHoQuery = "select maHo from nhan_khau where maNhanKhau = " + "'" + baotu.getMaNguoiChet()+"'";
@@ -64,8 +65,8 @@ public class NhanKhauService{
         while (rs.next()) {
             maHo = rs.getString("maHo");
         }
-        System.out.println(maHo);
         preparedStatement.close();
+
         //history
         String historyQuery = getHistoryQuery(maHo, "bao tu", "khong", "da chet");
         Statement stma = connection.createStatement();

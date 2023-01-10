@@ -119,7 +119,6 @@ public class ControllerNhanKhau implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
-            System.out.println("go to init");
             showNhanKhau();
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
