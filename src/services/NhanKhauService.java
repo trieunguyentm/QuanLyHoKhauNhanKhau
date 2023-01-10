@@ -53,11 +53,12 @@ public class NhanKhauService{
 		return true;
 	}
 
-    public boolean update(String maNhanKhau, String quanHe) throws ClassNotFoundException, SQLException {
+    public boolean update(String maNhanKhau, String quanHe, String maHo, String hoTen) throws ClassNotFoundException, SQLException {
         //thieu nhieu field
         DataBaseConnection connectionToDB = new DataBaseConnection();
         Connection connection = connectionToDB.getConnection(null, null);
-        String query = "UPDATE nhan_khau " + "set quanHeVoiChuHo =" + "N'" + quanHe + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
+        String query = "UPDATE nhan_khau " + "set quanHeVoiChuHo =" + "N'" + quanHe + "', maHo = " +   "'" + maHo + "',hoTen =  " + "N'"+ hoTen + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
+        System.out.println(query);
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         connection.close();

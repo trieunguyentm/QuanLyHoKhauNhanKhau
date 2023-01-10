@@ -16,11 +16,15 @@ public class SuaNhanKhau {
     private TextField tfMaNhanKhau;
     @FXML
     private TextField tfQuanHeVoiChuHo;
+    @FXML
+    private TextField tfMaHo;
+    @FXML
+    private TextField tfHoTen;
 
     // Event Listener on Button.onAction
     @FXML
     public void update(ActionEvent event) throws SQLException, ClassNotFoundException {
-        new NhanKhauService().update(tfMaNhanKhau.getText(), tfQuanHeVoiChuHo.getText());
+        new NhanKhauService().update(tfMaNhanKhau.getText(), tfQuanHeVoiChuHo.getText(), tfMaHo.getText(), tfHoTen.getText());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
