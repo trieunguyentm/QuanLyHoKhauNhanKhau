@@ -67,7 +67,6 @@ public class ThemNhanKhau {
         // kiem tra ma nguoi nhap vao
         // ma nguoi 4 so
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
-        System.out.println(ControllerNhanKhau.numberOfPeople);
         if (!((pattern.matcher(tfMaNhanKhau.getText()).matches()) && (Integer.parseInt(tfMaNhanKhau.getText()) > ControllerNhanKhau.numberOfPeople))) {
             Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);

@@ -21,7 +21,7 @@
       <Label layoutX="97.0" layoutY="244.0" text="ngày sinh" />
       <Label layoutX="97.0" layoutY="287.0" text="quê quán" />
       <TextField fx:id="tfMaNhanKhau" layoutX="224.0" layoutY="98.0" />
-      <TextField fx:id="tfHoTen" layoutX="224.0" layoutY="142.0" style="-fx-background-image: https://www.shutterstock.com/file-converter;" />
+      <TextField fx:id="tfHoTen" layoutX="224.0" layoutY="142.0" />
       <TextField fx:id="tfGioiTinh" layoutX="224.0" layoutY="188.0" />
       <TextField fx:id="tfNgaySinh" layoutX="224.0" layoutY="240.0" />
       <TextField fx:id="tfQueQuan" layoutX="224.0" layoutY="283.0" />

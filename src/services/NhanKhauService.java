@@ -80,7 +80,6 @@ public class NhanKhauService{
         DataBaseConnection connectionToDB = new DataBaseConnection();
         Connection connection = connectionToDB.getConnection(null, null);
         String query = "UPDATE nhan_khau " + "set quanHeVoiChuHo =" + "N'" + quanHe + "', maHo = " +   "'" + maHo + "',hoTen =  " + "N'"+ hoTen + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
-        System.out.println(query);
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         connection.close();

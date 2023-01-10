@@ -52,7 +52,6 @@ public class SuaNhanKhau {
         }
         //regex ma nguoi
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
-        System.out.println(ControllerNhanKhau.numberOfPeople);
         if (!((pattern.matcher(tfMaNhanKhau.getText()).matches()) )) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
