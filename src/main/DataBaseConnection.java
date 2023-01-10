@@ -20,10 +20,11 @@ public class DataBaseConnection {
         Connection conn;
         //Kết nối với database qua user và password
         try{
-            String urlLink = "jdbc:sqlserver://localhost:1433;databaseName=quanlynhankhau;user="+ userDataBase +";password="+ passwordDataBase +";encrypt=true;trustServerCertificate=true;";
+            String urlLink = "jdbc:sqlserver://DESKTOP-QT211P8\\SQLEXPRESS;databaseName=quanlynhankhau;user=Thien;password=123;encrypt=true;trustServerCertificate=true;";
             conn = DriverManager.getConnection(urlLink);
 
         } catch (SQLException e) {
+            System.out.println("ket noi that bai");
             throw new RuntimeException(e);
         }
         //Kiểm tra kết nối, nếu conn = null thì kết nối thất bại
@@ -31,6 +32,7 @@ public class DataBaseConnection {
         {
             System.out.println("KẾT NỐI VỚI DATABASE THẤT BẠI");
         }
+
         return conn;
     }
 }
