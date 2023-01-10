@@ -47,7 +47,6 @@ public class KhaiTuController {
 
         //regex ma nguoi die
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
-        System.out.println(ControllerNhanKhau.numberOfPeople);
         if (!((pattern.matcher(tfMaNguoiChet.getText()).matches()))) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nguoi die hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
@@ -56,8 +55,7 @@ public class KhaiTuController {
         }
         //regex ma nguoi khai
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
-        System.out.println(ControllerNhanKhau.numberOfPeople);
-        if (!((pattern.matcher(tfNgayKhai.getText()).matches()))) {
+        if (!((pattern.matcher(tfMaNguoiKhai.getText()).matches()))) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nguoi khai hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();

@@ -52,7 +52,7 @@ public class ControllerNhanKhau implements Initializable{
     public void themNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/themNhanKhau.fxml"));
         Stage stage = new Stage();
-        stage.setScene(new Scene(home,800,600));
+        stage.setScene(new Scene(home,575,566));
         stage.setResizable(false);
         stage.showAndWait();
         showNhanKhau();
@@ -76,7 +76,7 @@ public class ControllerNhanKhau implements Initializable{
         loader.setLocation(getClass().getResource("/view/NhanKhau/update.fxml"));
         Parent home = loader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(home, 800, 600));
+        stage.setScene(new Scene(home, 600, 400));
         SuaNhanKhau suaNhanKhau = loader.getController();
 
         // bat loi truong hop khong hop le
