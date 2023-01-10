@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.baoTuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhanKhau.KhaiTuController">
    <children>
       <TextField fx:id="tfMaNguoiChet" layoutX="226.0" layoutY="85.0" />
       <TextField fx:id="tfMaNguoiKhai" layoutX="226.0" layoutY="124.0" />
@@ -16,5 +16,6 @@
       <TextField fx:id="tfNgayKhai" layoutX="226.0" layoutY="223.0" />
       <Label layoutX="118.0" layoutY="227.0" text="ngayKhai" />
       <Button layoutX="274.0" layoutY="283.0" mnemonicParsing="false" onAction="#baoTu" text="Button" />
+      <Label layoutX="272.0" layoutY="39.0" text="báo tử" />
    </children>
 </AnchorPane>

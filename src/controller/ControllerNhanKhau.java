@@ -6,25 +6,22 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.NhanKhau;
-import services.NhanKhauService;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import services.NhanKhauService;
+
 public class ControllerNhanKhau implements Initializable{
     @FXML
     private TableView tvNhanKhau;
@@ -37,10 +34,12 @@ public class ControllerNhanKhau implements Initializable{
     @FXML
     private TableColumn colGioiTinh;
     @FXML
+    private TableColumn colGhiChu;
+    @FXML
     private TableColumn colQuanHe;
     @FXML
     private TableColumn colMaHo;
-
+    public static int numberOfPeople;
     private ObservableList<NhanKhau> listValueTableView;
     private List<NhanKhau> listNhanKhau;
 
@@ -57,7 +56,7 @@ public class ControllerNhanKhau implements Initializable{
     // Event Listener on Button.onAction
     @FXML
     public void baoTu(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
-        Parent home = FXMLLoader.load(getClass().getResource("/views/NhanKhau/baoTu.fxml"));
+        Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/baoTu.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(home,600,400));
         stage.setResizable(false);
@@ -71,6 +70,7 @@ public class ControllerNhanKhau implements Initializable{
 
     public void showNhanKhau() throws ClassNotFoundException, SQLException {
         listNhanKhau = new NhanKhauService().getListNhanKhau();
+        numberOfPeople = listNhanKhau.size();
         listValueTableView = FXCollections.observableArrayList(listNhanKhau);
 
         // tao map anh xa gia tri Id sang maHo
@@ -82,6 +82,7 @@ public class ControllerNhanKhau implements Initializable{
         colGioiTinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("gioiTinh"));
         colMaHo.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("maHo"));
         colQuanHe.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("quanHeVoiChuHo"));
+        colGhiChu.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("ghiChu"));
         tvNhanKhau.setItems(listValueTableView);
         // thiet lap gia tri cho combobox
     }

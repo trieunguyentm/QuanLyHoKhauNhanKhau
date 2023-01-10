@@ -13,11 +13,12 @@
       <TableView fx:id="tvNhanKhau" layoutY="89.0" prefHeight="511.0" prefWidth="800.0">
          <columns>
             <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="colHoVaTen" prefWidth="133.0" text="Họ và tên" />
-            <TableColumn fx:id="colTuoi" prefWidth="83.0" text="tuổi" />
+            <TableColumn fx:id="colHoVaTen" prefWidth="156.0" text="Họ và tên" />
+            <TableColumn fx:id="colTuoi" prefWidth="60.0" text="tuổi" />
             <TableColumn fx:id="colGioiTinh" prefWidth="87.0" text="giới tính" />
-            <TableColumn fx:id="colMaHo" prefWidth="207.0" text="mã hộ" />
-            <TableColumn fx:id="colQuanHe" prefWidth="207.0" text="quan hệ với chủ hộ" />
+            <TableColumn fx:id="colMaHo" prefWidth="107.0" text="mã hộ" />
+            <TableColumn fx:id="colQuanHe" minWidth="0.0" prefWidth="122.0" text="quan hệ" />
+            <TableColumn fx:id="colGhiChu" minWidth="0.0" prefWidth="192.0" text="ghi chú" />
          </columns>
       </TableView>
    </children>

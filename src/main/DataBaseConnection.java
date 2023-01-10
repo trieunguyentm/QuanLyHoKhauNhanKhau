@@ -32,7 +32,7 @@ public class DataBaseConnection {
         {
             System.out.println("KẾT NỐI VỚI DATABASE THẤT BẠI");
         }
-        System.out.println("ket noi thanh cong");
+
         return conn;
     }
 }

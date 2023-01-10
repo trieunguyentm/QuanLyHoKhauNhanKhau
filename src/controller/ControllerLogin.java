@@ -107,6 +107,8 @@ public class ControllerLogin implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Hiệu ứng khi di chuyển chuột vào các component
+        userLogin.setText("admin");
+        passLogin.setText("admin");
         buttonLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> buttonLogin.setEffect(new SepiaTone()));
         buttonLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> buttonLogin.setEffect(null));
         userLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> userLogin.setEffect(new SepiaTone()));
