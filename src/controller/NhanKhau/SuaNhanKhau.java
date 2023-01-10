@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import model.NhanKhau;
 import services.NhanKhauService;
 
 import java.sql.SQLException;
@@ -27,5 +28,11 @@ public class SuaNhanKhau {
         new NhanKhauService().update(tfMaNhanKhau.getText(), tfQuanHeVoiChuHo.getText(), tfMaHo.getText(), tfHoTen.getText());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+    public void setNhanKhau(NhanKhau nhanKhauModel) {
+        tfMaNhanKhau.setText(nhanKhauModel.getMaNhanKhau());
+        tfQuanHeVoiChuHo.setText(nhanKhauModel.getQuanHeVoiChuHo());
+        tfMaHo.setText(nhanKhauModel.getMaHo());
+        tfHoTen.setText(nhanKhauModel.getHoTen());
     }
 }

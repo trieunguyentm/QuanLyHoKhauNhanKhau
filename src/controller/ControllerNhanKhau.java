@@ -1,4 +1,5 @@
 package controller;
+import controller.NhanKhau.SuaNhanKhau;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,9 +14,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.HoKhau;
 import model.NhanKhau;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -66,9 +70,27 @@ public class ControllerNhanKhau implements Initializable{
 
     @FXML
     public void suaThongTin(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/update.fxml"));
+        //tao mot nhan khau object
+        NhanKhau nhanKhauModel = (NhanKhau) tvNhanKhau.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/NhanKhau/update.fxml"));
+        Parent home = loader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(home,600,400));
+        stage.setScene(new Scene(home, 800, 600));
+        SuaNhanKhau suaNhanKhau = loader.getController();
+
+        // bat loi truong hop khong hop le
+        if (suaNhanKhau == null)
+            return;
+        if (nhanKhauModel == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Chọn hộ khẩu cần sửa !", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return;
+        }
+        //đổ object đó vaof view
+        suaNhanKhau.setNhanKhau(nhanKhauModel);
+
         stage.setResizable(false);
         stage.showAndWait();
         showNhanKhau();

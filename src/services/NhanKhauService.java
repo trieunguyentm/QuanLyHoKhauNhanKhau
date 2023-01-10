@@ -12,7 +12,8 @@ import main.DataBaseConnection;
 import model.KhaiTu;
 import model.NhanKhau;
 
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class NhanKhauService{
 
@@ -32,6 +33,12 @@ public class NhanKhauService{
         preparedStatement.setString(8, nhanKhauModel.getQuanHeVoiChuHo());
         preparedStatement.executeUpdate();
         preparedStatement.close();
+
+        //history purpose
+        String historyQuery = getHistoryQuery(nhanKhauModel.getMaHo(), "them nguoi", "khong", nhanKhauModel.getMaHo());
+        Statement stm = connection.createStatement();
+        stm.executeUpdate(historyQuery);
+
         connection.close();
         return true;
     }
@@ -49,12 +56,26 @@ public class NhanKhauService{
 		String query2 = "update nhan_khau set ghiChu = 'da chet' where maNhanKhau = " + baotu.getMaNguoiChet() ;
 		Statement stm = connection.createStatement();
 		stm.executeUpdate(query2);
+        //get ma ho cua nguoi bi chet
+        String maHo = null;
+        String getMaHoQuery = "select maHo from nhan_khau where maNhanKhau = " + "'" + baotu.getMaNguoiChet()+"'";
+        PreparedStatement stmGetMaHo = (PreparedStatement) connection.prepareStatement(getMaHoQuery);
+        ResultSet rs = stmGetMaHo.executeQuery();
+        while (rs.next()) {
+            maHo = rs.getString("maHo");
+        }
+        System.out.println(maHo);
+        preparedStatement.close();
+        //history
+        String historyQuery = getHistoryQuery(maHo, "bao tu", "khong", "da chet");
+        Statement stma = connection.createStatement();
+        stma.executeUpdate(historyQuery);
+
 		connection.close();
 		return true;
 	}
 
     public boolean update(String maNhanKhau, String quanHe, String maHo, String hoTen) throws ClassNotFoundException, SQLException {
-        //thieu nhieu field
         DataBaseConnection connectionToDB = new DataBaseConnection();
         Connection connection = connectionToDB.getConnection(null, null);
         String query = "UPDATE nhan_khau " + "set quanHeVoiChuHo =" + "N'" + quanHe + "', maHo = " +   "'" + maHo + "',hoTen =  " + "N'"+ hoTen + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
@@ -79,5 +100,13 @@ public class NhanKhauService{
         preparedStatement.close();
         connection.close();
         return list;
+    }
+    //get String for history searching purpose
+    public String getHistoryQuery(String maHo, String typeOfChange, String from, String to ) {
+        LocalDate dateObj = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String date = dateObj.format(formatter);
+
+        return "insert into dinh_chinh values('" + maHo + "','" + typeOfChange + "','" + from + "','" + to + "','" + date + "'," + "'admin')";
     }
 }
