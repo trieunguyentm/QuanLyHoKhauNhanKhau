@@ -65,7 +65,13 @@ public class ControllerNhanKhau implements Initializable{
     }
 
     @FXML
-    public void suaThongTin(ActionEvent event) {
+    public void suaThongTin(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/update.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(home,600,400));
+        stage.setResizable(false);
+        stage.showAndWait();
+        showNhanKhau();
     }
 
     public void showNhanKhau() throws ClassNotFoundException, SQLException {

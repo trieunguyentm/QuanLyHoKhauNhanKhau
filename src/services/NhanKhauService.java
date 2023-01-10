@@ -57,7 +57,7 @@ public class NhanKhauService{
         //thieu nhieu field
         DataBaseConnection connectionToDB = new DataBaseConnection();
         Connection connection = connectionToDB.getConnection(null, null);
-        String query = "UPDATE nhan_khau " + "set quanHe =" + "'" + quanHe + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
+        String query = "UPDATE nhan_khau " + "set quanHeVoiChuHo =" + "N'" + quanHe + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         connection.close();
