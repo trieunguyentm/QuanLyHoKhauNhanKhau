@@ -1,4 +1,6 @@
 # QuanLyHoKhauNhanKhau
+<h1>chú ý!!! xem trình tự hoạt động của một chức năng tại</h1>
+<p>https://docs.google.com/document/d/1NUHZHQpt4sEaynAngoZAH_opLB1hZkXt/edit?usp=sharing&ouid=107515806415857232666&rtpof=true&sd=true</p>
 <h2>Bài Tập Lớn Môn Công Nghệ Phần Mềm</h2>
 phần này t sẽ thêm các chức năng về nhân khẩu</br>
 thiedzvc
