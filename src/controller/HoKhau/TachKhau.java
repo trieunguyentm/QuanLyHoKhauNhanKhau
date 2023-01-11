@@ -12,6 +12,7 @@ import model.HoKhau;
 import services.HoKhauService;
 
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class TachKhau {
     //TODO: alert update quanHeVoiChuHo sau khi nhap xong
@@ -53,6 +54,33 @@ public class TachKhau {
 
     public boolean check() {
         //them regex
-        return true;
+        Pattern pattern;
+        // kiem tra ma nguoi nhap vao
+        // ma nguoi 4 so
+        pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
+        if (!((pattern.matcher(tfMaHoCu.getText()).matches()) || (pattern.matcher(tfMaHoMoi.getText()).matches()) )) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã ho hợp lệ!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return false;
+        }
+        pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
+        if (!pattern.matcher(tfMaChuHoMoi.getText()).matches()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nhan khau hợp lệ!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return false;
+        }
+
+        pattern = Pattern.compile("(([0-9][0-9][0-9][0-9]\\s){0,100})");
+        if (!pattern.matcher(tfDanhSach.getText() + " ").matches()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào danh sach hợp lệ!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return false;
+        }
+
+
+        return  true;
     }
 }

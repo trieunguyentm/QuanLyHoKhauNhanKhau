@@ -1,4 +1,5 @@
 package controller.HoKhau;
+import controller.ControllerNhanKhau;
 import javafx.fxml.FXML;
 
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import services.HoKhauService;
 import services.NhanKhauService;
 
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class DoiChuHo {
         @FXML
@@ -38,6 +40,23 @@ public class DoiChuHo {
 
         public boolean check() {
                 //them regex
-                return true;
+                Pattern pattern;
+                // kiem tra ma nguoi nhap vao
+                // ma nguoi 4 so
+                pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
+                if (!((pattern.matcher(tfMaChuMoi.getText()).matches()) || (pattern.matcher(tfMaChuCu.getText()).matches()) )) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                        return false;
+                }
+                pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
+                if (!pattern.matcher(tfMaHo.getText()).matches()) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã hộ hợp lệ!", ButtonType.OK);
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                        return false;
+                }
+                return  true;
         }
 }
