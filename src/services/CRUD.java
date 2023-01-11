@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public abstract class CRUD {
+    //phục vụ refactor code, hiện chưa cần quan tâm
     public boolean add(Object obj) throws SQLException {
         DataBaseConnection connectionToDB = new DataBaseConnection();
         Connection connection = connectionToDB.getConnection(null, null);

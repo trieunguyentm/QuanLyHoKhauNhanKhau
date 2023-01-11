@@ -29,11 +29,15 @@ public class SuaNhanKhau {
     // Event Listener on Button.onAction
     @FXML
     public void update(ActionEvent event) throws SQLException, ClassNotFoundException {
+        //kiểm tra xem dữ liệu nhập có hợp lệ
         if(!check()) return;
+        //thao tác đến database để update người đc chọn
         new NhanKhauService().update(tfMaNhanKhau.getText(), tfQuanHeVoiChuHo.getText(), tfMaHo.getText(), tfHoTen.getText());
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+    //mục đích chinh để đổ data từ view vào các textfield nhằm nhập dễ dàng hơn
     public void setNhanKhau(NhanKhau nhanKhauModel) {
         tfMaNhanKhau.setText(nhanKhauModel.getMaNhanKhau());
         tfQuanHeVoiChuHo.setText(nhanKhauModel.getQuanHeVoiChuHo());

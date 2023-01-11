@@ -44,6 +44,7 @@ public class ControllerHoKhau implements Initializable {
     private List<HoKhau> listHoKhau;
 
     // Event Listener on Button[#tfTachKhau].onAction
+    //render ra view Tách Khẩu, ủy quyền tách khẩu cho view này
     @FXML
     public void tachKhau(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/HoKhau/TachKhau.fxml"));
@@ -54,6 +55,7 @@ public class ControllerHoKhau implements Initializable {
         showHoKhau();
     }
     // Event Listener on Button.onAction
+    //render ra view đổi chủ hooj, ủy quyền
     @FXML
     public void doiChuHo(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/HoKhau/DoiChuHo.fxml"));
@@ -64,6 +66,7 @@ public class ControllerHoKhau implements Initializable {
         showHoKhau();
     }
 
+    //render ra view chuyển hộ, ủy quyền
     @FXML
     public void chuyenHo(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/HoKhau/DoiHoKhau.fxml"));
@@ -75,16 +78,14 @@ public class ControllerHoKhau implements Initializable {
     }
 
     public void showHoKhau() throws ClassNotFoundException, SQLException {
+        //lấy danh sách hộ từ database thông qua class service
         listHoKhau = new HoKhauService().getListHoKhau();
+
         listValueTableView = FXCollections.observableArrayList(listHoKhau);
-
-        // tao map anh xa gia tri Id sang maHo
-
         // thiet lap cac cot cho tableviews
         colMaHo.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("maHo"));
         colMaChuHo.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("maChuHo"));
         tvHoKhau.setItems(listValueTableView);
-        // thiet lap gia tri cho combobox
     }
 
 

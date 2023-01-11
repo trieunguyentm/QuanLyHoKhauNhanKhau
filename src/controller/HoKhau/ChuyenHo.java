@@ -22,11 +22,13 @@ public class ChuyenHo {
     private TextField tfMaHoMoi;
 
     public boolean chuyenHo(ActionEvent event) throws SQLException {
+        //method check() phía dưới phục vụ việc kiểm tra data người dùng nhập vào, nếu sai thì không làm gì cả
         if(!check()) return false;
+        //lấy dữ liệu từ các textfield sau khi check chúng đã hợp lệ
         String maNhanKhau = tfMaNhanKhau.getText();
         String maHoCu = tfMaHoCu.getText();
         String maHoMoi = tfMaHoMoi.getText();
-
+        //thao tác đến database sau khi lấy được dữ liệu
         new HoKhauService().chuyenHoKhau(maHoCu, maHoMoi, maNhanKhau);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
@@ -37,7 +39,7 @@ public class ChuyenHo {
         //them regex
         Pattern pattern;
         // kiem tra ma nguoi nhap vao
-        // ma nguoi 4 so
+        // ma nguoi 4 so, có dạng xxxx nên regex tương  ứng [0-9][0-9][0-9][0-9]
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
         if (!((pattern.matcher(tfMaHoCu.getText()).matches()) || (pattern.matcher(tfMaHoMoi.getText()).matches()) )) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã ho hợp lệ!", ButtonType.OK);

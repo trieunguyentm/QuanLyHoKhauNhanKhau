@@ -26,9 +26,10 @@ public class DoiChuHo {
         // Event Listener on Button.onAction
         @FXML
         public void doiChuHo(ActionEvent event) throws SQLException {
+                //method check() phía dưới phục vụ việc kiểm tra data người dùng nhập vào, nếu sai thì không làm gì cả
                 if(!check()) return;
+                //sửa chủ hộ
                 new HoKhauService().suaChuHo(tfMaHo.getText(), tfMaChuCu.getText(), tfMaChuMoi.getText());
-
                 //alert cap nhat quan he
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
                 alert.setHeaderText(null);
@@ -42,7 +43,7 @@ public class DoiChuHo {
                 //them regex
                 Pattern pattern;
                 // kiem tra ma nguoi nhap vao
-                // ma nguoi 4 so
+                //pattern: tìm treen internet
                 pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
                 if (!((pattern.matcher(tfMaChuMoi.getText()).matches()) || (pattern.matcher(tfMaChuCu.getText()).matches()) )) {
                         Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
@@ -50,6 +51,7 @@ public class DoiChuHo {
                         alert.showAndWait();
                         return false;
                 }
+                //regex check mã hộ
                 pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
                 if (!pattern.matcher(tfMaHo.getText()).matches()) {
                         Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã hộ hợp lệ!", ButtonType.OK);

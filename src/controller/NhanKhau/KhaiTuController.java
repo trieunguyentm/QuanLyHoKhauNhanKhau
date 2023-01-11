@@ -28,16 +28,18 @@ public class KhaiTuController {
     // Event Listener on Button.onAction
     @FXML
     public void baoTu(ActionEvent event) throws ClassNotFoundException, SQLException {
+        //check xem data từ các textfield người dùng nhập có hợp lệ khônh
         if(!check()) return;
 
         String maNguoiChet = tfMaNguoiChet.getText();
         String maNguoiKhau = tfMaNguoiKhai.getText();
         String LyDoChet = tfLyDoChet.getText();
         String NgayKhai = tfNgayKhai.getText();
-
+        //tạo khai tử object, truyền vào class service để thực hiện thao tác với database
         KhaiTu baotu = new KhaiTu(maNguoiKhau, maNguoiChet, NgayKhai, LyDoChet);
         NhanKhauService sv = new NhanKhauService();
         sv.baoTu(baotu);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

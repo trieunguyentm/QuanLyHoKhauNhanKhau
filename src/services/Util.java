@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Util {
+    //không cần quan tâm, dùng để tạo sẵn câu lệnh để điền vào bảng dinh_chinh
     public static boolean getHistoryQuery(String maHo, String typeOfChange, String from, String to, String nguoiThayDoi ) throws SQLException {
         //connection to db
         DataBaseConnection connectionToDB = new DataBaseConnection();

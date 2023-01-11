@@ -48,7 +48,7 @@ public class ControllerNhanKhau implements Initializable{
     private List<NhanKhau> listNhanKhau;
 
     // Event Listener on Button.onAction
-    //render ra mot view khac, uy quyen chuc nang cho view do
+    //render ra màn hình của phần thêm nhân khẩu, ủy quyền chức năng tương ứng với mô hình MVC chứa view đó
     @FXML
     public void themNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/themNhanKhau.fxml"));
@@ -59,6 +59,7 @@ public class ControllerNhanKhau implements Initializable{
         showNhanKhau();
     }
     // Event Listener on Button.onAction
+    //render ra màn hình view báo tử, ủy quyền chức năng tương ứng với mô hình MVC chứa view đó
     @FXML
     public void baoTu(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/baoTu.fxml"));
@@ -69,6 +70,7 @@ public class ControllerNhanKhau implements Initializable{
         showNhanKhau();
     }
 
+    //render ra màn hình của phần sửa thông tin, ủy quyền chức năng tương ứng với mô hình MVC chứa view đó
     @FXML
     public void suaThongTin(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         //tao mot nhan khau object
@@ -89,7 +91,7 @@ public class ControllerNhanKhau implements Initializable{
             alert.showAndWait();
             return;
         }
-        //đổ object đó vaof view
+        //đổ data đó vaof view sua nhan khau
         suaNhanKhau.setNhanKhau(nhanKhauModel);
 
         stage.setResizable(false);
@@ -97,13 +99,14 @@ public class ControllerNhanKhau implements Initializable{
         showNhanKhau();
     }
 
+    //set giá trị cho bảng tableview để nó render ra các data của bảng nhân khẩu
     public void showNhanKhau() throws ClassNotFoundException, SQLException {
+        //get list nhân khẩu từ database
         listNhanKhau = new NhanKhauService().getListNhanKhau();
+        //thuộc tính static để xem hiện tại có bao nhiêu người
         numberOfPeople = listNhanKhau.size();
+
         listValueTableView = FXCollections.observableArrayList(listNhanKhau);
-
-        // tao map anh xa gia tri Id sang maHo
-
         // thiet lap cac cot cho tableviews
         colID.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("maNhanKhau"));
         colHoVaTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));

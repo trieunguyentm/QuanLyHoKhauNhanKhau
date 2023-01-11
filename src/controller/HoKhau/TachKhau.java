@@ -28,25 +28,33 @@ public class TachKhau {
     // Event Listener on Button.onAction
     @FXML
     public void xacNhanTachKhau(ActionEvent event) throws SQLException {
+        //method check() phía dưới phục vụ việc kiểm tra data người dùng nhập vào, nếu sai thì không làm gì cả
         if(!check()) return;
+
         String maHoMoi = tfMaHoMoi.getText();
         String maChuMoi = tfMaChuHoMoi.getText();
         String danhSach = tfDanhSach.getText();
         String maHoCu = tfMaHoCu.getText();
-        //tao ho khau moi voi chu ho moi
+
+        //ý tưởng:
+        //-tạo  một hộ mới với một người làm chủ hộ, sửa thông tin người này
+        //- những người còn lại sẽ sửa thông tin maHo của họ
+
+        //tao ho khau moi voi chu ho moi, sau đó truyền dữ liệu này vào class service để thao tác tới database
         HoKhau hoKhau = new HoKhau(maHoMoi, maChuMoi);
         new HoKhauService().tachHoKhau(hoKhau, maHoCu);
-        //thay doi maHo cua nhung nguoi muon tach khau
+
         //tach ma cua nhung nguoi muon tach khau tu string
         String[] toSplit = danhSach.split(" ");
-        //update ho khau cua tung nguoi
+        //update ho khau cua tung nguoi muốn tách khẩu
         for(int i = 0; i < toSplit.length; i++) {
             new HoKhauService().chuyenHoKhau(maHoCu, maHoMoi, toSplit[i]);
         }
+        //thông báo cho người nhập cần cập nhật quan hệ cho các thành viên trong gia đình đó
         Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
         alert.setHeaderText(null);
         alert.showAndWait();
-
+        //đóng sence đó
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
