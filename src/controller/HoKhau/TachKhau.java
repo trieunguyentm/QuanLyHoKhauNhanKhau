@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 public class TachKhau {
-    //TODO: alert update quanHeVoiChuHo sau khi nhap xong
     @FXML
     private TextField tfMaHoMoi;
     @FXML

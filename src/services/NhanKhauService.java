@@ -56,7 +56,7 @@ public class NhanKhauService{
 		preparedStatement.setString(4, baotu.getLyDoChet());
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
-        //sau khi báo tử, cần cập nhật phần ghiChu trong bảng nhan_khau của người bị chết thành 'đa chet'
+        //sau khi báo tử, cần cập nhật phần ghiChu trong bảng nhan_khau của người bị chết thành 'đa chetA'
 		String query2 = "update nhan_khau set ghiChu = 'da chet' where maNhanKhau = " + baotu.getMaNguoiChet() ;
 		Statement stm = connection.createStatement();
 		stm.executeUpdate(query2);

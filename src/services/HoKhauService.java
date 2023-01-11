@@ -41,7 +41,7 @@ public class HoKhauService {
         preparedStatement.executeUpdate();
         preparedStatement.close();
         //cap nhat ma ho cua chu ho khau moi
-        String query3 = "UPDATE nhan_khau " + "set maHo = " + "'" +hoKhau.getMaHo() + "', quanHeVoiChuHo = 'chuHo' " + "where maNhanKhau =" + "'" + hoKhau.getMaChuHo()+"'";
+        String query3 = "UPDATE nhan_khau " + "set maHo = " + "'" +hoKhau.getMaHo() + "', quanHeVoiChuHo = 'chuHo' ," +"ghiChu = 'can xac minh quan he cua ho nay' " + "where maNhanKhau =" + "'" + hoKhau.getMaChuHo()+"'";
         Statement stm = connection.createStatement();
         stm.executeUpdate(query3);
         //ghi nhan lich su ho moi ở bảng ghi_nhan
@@ -63,7 +63,7 @@ public class HoKhauService {
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         //cập nhật vai trò của chủ mới là chuHo
-        String query2 = "UPDATE nhan_khau " + "set quanHeVoiChuHo = 'chuHo' " + "where maNhanKhau =" + "'" +maChuMoi+"'";
+        String query2 = "UPDATE nhan_khau " + "set quanHeVoiChuHo = 'chuHo' " + ", ghiChu = 'can xac minh quan he cua ho nay' " + "where maNhanKhau =" + "'" +maChuMoi+"'";
         Statement stm2 = connection.createStatement();
         stm.executeUpdate(query2);
         //cập nhật vai trò của chủ cũ là chuHoCu
