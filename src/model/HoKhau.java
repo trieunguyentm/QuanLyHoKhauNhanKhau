@@ -8,4 +8,20 @@ public class HoKhau {
         this.maHo = maHo;
         this.maChuHo = maChuHo;
     }
+
+    public String getMaHo() {
+        return maHo;
+    }
+
+    public void setMaHo(String maHo) {
+        this.maHo = maHo;
+    }
+
+    public String getMaChuHo() {
+        return maChuHo;
+    }
+
+    public void setMaChuHo(String maChuHo) {
+        this.maChuHo = maChuHo;
+    }
 }

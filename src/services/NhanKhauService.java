@@ -35,10 +35,10 @@ public class NhanKhauService{
         preparedStatement.close();
 
         //history purpose
-        String historyQuery = getHistoryQuery(nhanKhauModel.getMaHo(), "them nguoi", "khong", nhanKhauModel.getMaHo());
-        Statement stm = connection.createStatement();
-        stm.executeUpdate(historyQuery);
-
+//        String historyQuery = getHistoryQuery(nhanKhauModel.getMaHo(), "them nguoi", "khong", nhanKhauModel.getMaHo());
+//        Statement stm = connection.createStatement();
+//        stm.executeUpdate(historyQuery);
+        Util.getHistoryQuery(nhanKhauModel.getMaHo(), "them nguoi", "khong", nhanKhauModel.getMaHo(), nhanKhauModel.getMaNhanKhau());
         connection.close();
         return true;
     }
@@ -68,10 +68,11 @@ public class NhanKhauService{
         preparedStatement.close();
 
         //history
-        String historyQuery = getHistoryQuery(maHo, "bao tu", "khong", "da chet");
-        Statement stma = connection.createStatement();
-        stma.executeUpdate(historyQuery);
+//        String historyQuery = getHistoryQuery(maHo, "bao tu", "khong", "da chet");
+//        Statement stma = connection.createStatement();
+//        stma.executeUpdate(historyQuery);
 
+        Util.getHistoryQuery(maHo, "bao tu", "khong", "da chet", baotu.getMaNguoiChet());
 		connection.close();
 		return true;
 	}
@@ -100,13 +101,5 @@ public class NhanKhauService{
         preparedStatement.close();
         connection.close();
         return list;
-    }
-    //get String for history searching purpose
-    public String getHistoryQuery(String maHo, String typeOfChange, String from, String to ) {
-        LocalDate dateObj = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String date = dateObj.format(formatter);
-
-        return "insert into dinh_chinh values('" + maHo + "','" + typeOfChange + "','" + from + "','" + to + "','" + date + "'," + "'admin')";
     }
 }

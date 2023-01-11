@@ -14,7 +14,7 @@ public class Main extends Application {
         //thien da tung o day
 //        DataBaseConnection conn = new DataBaseConnection();
 //        //none sene
-//        conn.getConnection("abc", "def");
+//        conn.getConnection("Thien", "123");
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/Login.fxml")));
         //Tạo scene
         Scene scene = new Scene(root, 440, 430);

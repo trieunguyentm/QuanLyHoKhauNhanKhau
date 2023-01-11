@@ -48,6 +48,7 @@ public class ControllerNhanKhau implements Initializable{
     private List<NhanKhau> listNhanKhau;
 
     // Event Listener on Button.onAction
+    //render ra mot view khac, uy quyen chuc nang cho view do
     @FXML
     public void themNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
         Parent home = FXMLLoader.load(getClass().getResource("/view/NhanKhau/themNhanKhau.fxml"));

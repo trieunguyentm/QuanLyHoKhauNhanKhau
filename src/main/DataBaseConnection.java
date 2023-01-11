@@ -27,6 +27,7 @@ public class DataBaseConnection {
             System.out.println("ket noi that bai");
             throw new RuntimeException(e);
         }
+        System.out.println("ket noi thanh cong");
         //Kiểm tra kết nối, nếu conn = null thì kết nối thất bại
         if(conn == null)
         {
