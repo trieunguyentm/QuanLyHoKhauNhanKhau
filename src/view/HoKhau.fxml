@@ -20,5 +20,6 @@
             <InnerShadow />
          </effect>
       </TableView>
+      <Button layoutX="145.0" layoutY="2.0" mnemonicParsing="false" onAction="#chuyenHo" text="chuyển hộ" />
    </children>
 </AnchorPane>

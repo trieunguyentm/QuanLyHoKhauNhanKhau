@@ -64,6 +64,15 @@ public class ControllerHoKhau implements Initializable {
         showHoKhau();
     }
 
+    @FXML
+    public void chuyenHo(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Parent home = FXMLLoader.load(getClass().getResource("/view/HoKhau/DoiHoKhau.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(home,600,400));
+        stage.setResizable(false);
+        stage.showAndWait();
+        showHoKhau();
+    }
 
     public void showHoKhau() throws ClassNotFoundException, SQLException {
         listHoKhau = new HoKhauService().getListHoKhau();
