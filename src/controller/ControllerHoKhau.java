@@ -65,7 +65,7 @@ public class ControllerHoKhau implements Initializable {
         stage.setResizable(false);
         //Khóa stage cha lại khi hiện stage con
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Đôi chủ hộ");
+        stage.setTitle("Đổi chủ hộ");
         stage.showAndWait();
         showHoKhau();
     }
