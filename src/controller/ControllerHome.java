@@ -51,7 +51,7 @@ public class ControllerHome implements Initializable {
         taiKhoan.addEventHandler(MouseEvent.MOUSE_EXITED, event -> taiKhoan.setEffect(null));
     }
     @FXML
-    //Set center khi click vào Thống Kê
+        //Set center khi click vào Thống Kê
     void clickThongKe() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThongKe.fxml"));
         Pane thongKe;
@@ -59,7 +59,7 @@ public class ControllerHome implements Initializable {
         mainPane.setCenter(thongKe);
     }
     @FXML
-    //Set center khi click vào Hộ Khẩu
+        //Set center khi click vào Hộ Khẩu
     void clickHoKhau() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HoKhau.fxml"));
         Pane hoKhau;
@@ -67,7 +67,7 @@ public class ControllerHome implements Initializable {
         mainPane.setCenter(hoKhau);
     }
     @FXML
-    //Set center khi click vào Nhân Khẩu
+        //Set center khi click vào Nhân Khẩu
     void clickNhanKhau() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/NhanKhau.fxml"));
         Pane hoKhau;
@@ -75,7 +75,7 @@ public class ControllerHome implements Initializable {
         mainPane.setCenter(hoKhau);
     }
     @FXML
-    //Set center khi click vào Khoản Thu
+        //Set center khi click vào Khoản Thu
     void clickKhoanThu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KhoanThu.fxml"));
         Pane hoKhau;
@@ -83,7 +83,7 @@ public class ControllerHome implements Initializable {
         mainPane.setCenter(hoKhau);
     }
     @FXML
-    //Set center khi click vào Tài Khoản
+        //Set center khi click vào Tài Khoản
     void clickTaiKhoan() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TaiKhoan.fxml"));
         Pane hoKhau;

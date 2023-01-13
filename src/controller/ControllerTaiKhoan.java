@@ -109,7 +109,7 @@ public class ControllerTaiKhoan implements Initializable {
             //Cập nhật lại CSDL
             DataBaseConnection dataBaseConnection = new DataBaseConnection();
             Connection connection = dataBaseConnection.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
-            String updateAccount = "UPDATE users SET tenNguoiDung = N'"+ textTenNguoiDung.getText() + "', ngaySinh = N'"+ textNgaySinh.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) +"', gioiTinh = N'"+ textGioiTinh.getValue() +"' WHERE userName = 'tester'";
+            String updateAccount = "UPDATE users SET tenNguoiDung = N'"+ textTenNguoiDung.getText() + "', ngaySinh = N'"+ textNgaySinh.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) +"', gioiTinh = N'"+ textGioiTinh.getValue() +"' WHERE userName = '" + ControllerLogin.taikhoan.getTenTaiKhoan() + "'";
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateAccount);
             //Update thành công

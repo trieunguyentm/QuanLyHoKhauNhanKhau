@@ -1,27 +1,32 @@
 package controller.HoKhau;
-import controller.ControllerNhanKhau;
-import javafx.fxml.FXML;
-
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.effect.SepiaTone;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.HoKhauService;
-import services.NhanKhauService;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class DoiChuHo {
+public class DoiChuHo implements Initializable {
         @FXML
         private TextField tfMaHo;
         @FXML
         private TextField tfMaChuCu;
         @FXML
         private TextField tfMaChuMoi;
+        @FXML
+        private Button xacNhanThayDoi;
 
         // Event Listener on Button.onAction
         @FXML
@@ -60,5 +65,11 @@ public class DoiChuHo {
                         return false;
                 }
                 return  true;
+        }
+
+        @Override
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+                xacNhanThayDoi.addEventHandler(MouseEvent.MOUSE_MOVED, event -> xacNhanThayDoi.setEffect(new SepiaTone()));
+                xacNhanThayDoi.addEventHandler(MouseEvent.MOUSE_EXITED, event -> xacNhanThayDoi.setEffect(null));
         }
 }
