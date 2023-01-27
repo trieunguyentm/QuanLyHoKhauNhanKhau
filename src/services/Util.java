@@ -19,7 +19,7 @@ public class Util {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String date = dateObj.format(formatter);
         //query
-        String historyQuery = "insert into dinh_chinh values('" + maHo + "','" + typeOfChange + "','" + from + "','" + to + "','" + date + "'," + "'" + nguoiThayDoi +"')";
+        String historyQuery = "insert into dinh_chinh values('" + maHo + "',N'" + typeOfChange + "','" + from + "','" + to + "','" + date + "'," + "'" + nguoiThayDoi +"')";
         Statement stm = connection.createStatement();
         stm.executeUpdate(historyQuery);
         connection.close();

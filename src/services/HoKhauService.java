@@ -20,9 +20,9 @@ public class HoKhauService {
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         //cap nhat bảng dinh_chinh với mã hộ laf mã ho cu - chuyển hộ tương ứng 1 người ra đi
-        Util.getHistoryQuery(maHoCu, "chuyen di", maHoCu, maHoMoi, maNhanKhau);
+        Util.getHistoryQuery(maHoCu, "chuyển đi", maHoCu, maHoMoi, maNhanKhau);
         //cap nhat bang lich su cho ho moi
-        Util.getHistoryQuery(maHoMoi, "chuyen den", maHoCu, maHoMoi, maNhanKhau);
+        Util.getHistoryQuery(maHoMoi, "chuyển đến", maHoCu, maHoMoi, maNhanKhau);
         connection.close();
     }
     //thao tác tách hộ khẩu với database
@@ -43,9 +43,9 @@ public class HoKhauService {
         Statement stm = connection.createStatement();
         stm.executeUpdate(query3);
         //ghi nhan lich su ho moi ở bảng ghi_nhan
-        Util.getHistoryQuery(hoKhau.getMaHo(), "lap ho khau", "khong", hoKhau.getMaHo(), hoKhau.getMaChuHo());
+        Util.getHistoryQuery(hoKhau.getMaHo(), "lập hộ khẩu", "khong", hoKhau.getMaHo(), hoKhau.getMaChuHo());
         //ghi nhan việc người rowif đi ở hộ cũ
-        Util.getHistoryQuery(maHoCu, "chuyen di", maHoCu, hoKhau.getMaHo(), hoKhau.getMaChuHo());
+        Util.getHistoryQuery(maHoCu, "chuyển đi", maHoCu, hoKhau.getMaHo(), hoKhau.getMaChuHo());
 
         connection.close();
     }
@@ -67,7 +67,7 @@ public class HoKhauService {
         stm.executeUpdate(query3);
 
         //ghi nhận lịch sử thay đổi
-        Util.getHistoryQuery(maHo, "doi chu ho", maChuCu, maChuMoi, maChuMoi);
+        Util.getHistoryQuery(maHo, "đổi chủ hộ", maChuCu, maChuMoi, maChuMoi);
 
         connection.close();
     }

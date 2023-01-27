@@ -22,7 +22,7 @@ public class DataBaseConnection {
 
         Connection conn;
         try {
-            String urlLink = "jdbc:sqlserver://localhost:1433;databaseName=quanlynhankhau;user=" + userDataBase + ";password=" + passwordDataBase + ";encrypt=true;trustServerCertificate=true;";
+            String urlLink = "jdbc:sqlserver://DESKTOP-QT211P8\\SQLEXPRESS;databaseName=quanlynhankhau;user=Thien;password=123;encrypt=true;trustServerCertificate=true;";
             conn = DriverManager.getConnection(urlLink);
         } catch (SQLException var5) {
             throw new RuntimeException(var5);

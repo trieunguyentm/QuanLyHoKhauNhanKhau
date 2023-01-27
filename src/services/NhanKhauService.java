@@ -57,7 +57,7 @@ public class NhanKhauService{
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
         //sau khi báo tử, cần cập nhật phần ghiChu trong bảng nhan_khau của người bị chết thành 'đa chetA'
-		String query2 = "update nhan_khau set ghiChu = 'da chet' where maNhanKhau = " + baotu.getMaNguoiChet() ;
+		String query2 = "update nhan_khau set ghiChu = N'đã chết' where maNhanKhau = " + baotu.getMaNguoiChet() ;
 		Statement stm = connection.createStatement();
 		stm.executeUpdate(query2);
 
@@ -71,7 +71,7 @@ public class NhanKhauService{
         }
         preparedStatement.close();
         //sau khi có được mã hộ của người chết, cập nhật bảng dinh_chinh để lưu lịch sử thay đổi
-        Util.getHistoryQuery(maHo, "bao tu", "khong", "da chet", baotu.getMaNguoiChet());
+        Util.getHistoryQuery(maHo, "báo tử", "khong", "da chet", baotu.getMaNguoiChet());
 		connection.close();
 		return true;
 	}

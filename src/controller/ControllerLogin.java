@@ -113,5 +113,7 @@ public class ControllerLogin implements Initializable {
         userLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> userLogin.setEffect(null));
         passLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> passLogin.setEffect(new SepiaTone()));
         passLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> passLogin.setEffect(null));
+        userLogin.setText("admin");
+        passLogin.setText("admin");
     }
 }
