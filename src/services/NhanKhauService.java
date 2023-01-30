@@ -1,27 +1,21 @@
 package services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
+import controller.ControllerLogin;
 import main.DataBaseConnection;
 import model.KhaiTu;
 import model.NhanKhau;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NhanKhauService{
 
     // phương thức phục vụ mục đích thêm người vào bảng nhan_khau
-    public boolean add(NhanKhau nhanKhauModel) throws ClassNotFoundException, SQLException {
+    public void add(NhanKhau nhanKhauModel) throws SQLException {
         //get connection
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection(null, null);
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //query như trong thực hành SQL, thêm người vào bảng nhan_khau
         String query = "insert into nhan_khau(maNhanKhau, hoTen, gioiTinh, ngaySinh, queQuan, ngheNghiep, maHo, quanHeVoiChuHo)" + " values (?, ?, ?, ?, ?, ?, ?, ?)";
         //mấy cái lằng nhà lằng nhằng để cho câu lệnh trên được thực hiện vào database (nó sẽ làm câu lệnh thực hiện giống việc chạy sqlserver managerment studio
@@ -40,12 +34,11 @@ public class NhanKhauService{
         //thêm người xong thì cập nhật lịch sử thay đổi ở bảng dinh_chinh, loại thay đổi là 'them nguoi'
         Util.getHistoryQuery(nhanKhauModel.getMaHo(), "them nguoi", "khong", nhanKhauModel.getMaHo(), nhanKhauModel.getMaNhanKhau());
         connection.close();
-        return true;
     }
     //phuongw thúc để thao tác với case báo tử
-	public boolean baoTu(KhaiTu baotu) throws SQLException, ClassNotFoundException {
+	public void baoTu(KhaiTu baotu) throws SQLException {
         //get connection
-        Connection connection = new DataBaseConnection().getConnection(null, null);
+        Connection connection = new DataBaseConnection().getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //query như trong thực hành SQL, thêm người chết vào bảng khai_tu
 		String query = "INSERT INTO khai_tu( maNguoiKhai, maNguoiChet, ngayKhai, lyDoChet)" + " values ( ?, ?, ?, ?)";
         //mấy cái lằng nhà lằng nhằng để cho câu lệnh trên được thực hiện vào database (nó sẽ làm câu lệnh thực hiện giống việc chạy sqlserver managerment studio
@@ -64,7 +57,7 @@ public class NhanKhauService{
         //get ma ho cua nguoi bi chết để điền vào bảng dinh_chinh
         String maHo = null;
         String getMaHoQuery = "select maHo from nhan_khau where maNhanKhau = " + "'" + baotu.getMaNguoiChet()+"'";
-        PreparedStatement stmGetMaHo = (PreparedStatement) connection.prepareStatement(getMaHoQuery);
+        PreparedStatement stmGetMaHo = connection.prepareStatement(getMaHoQuery);
         ResultSet rs = stmGetMaHo.executeQuery();
         while (rs.next()) {
             maHo = rs.getString("maHo");
@@ -73,27 +66,25 @@ public class NhanKhauService{
         //sau khi có được mã hộ của người chết, cập nhật bảng dinh_chinh để lưu lịch sử thay đổi
         Util.getHistoryQuery(maHo, "bao tu", "khong", "da chet", baotu.getMaNguoiChet());
 		connection.close();
-		return true;
-	}
+    }
     //cập nhật thông tin cho bảng nhân khẩu
-    public boolean update(String maNhanKhau, String quanHe, String maHo, String hoTen) throws ClassNotFoundException, SQLException {
+    public void update(String maNhanKhau, String quanHe, String maHo, String hoTen) throws SQLException {
         //connect to db
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection(null, null);
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //query cập  nhật quan hệ
         String query = "UPDATE nhan_khau " + "set quanHeVoiChuHo =" + "N'" + quanHe + "', maHo = " +   "'" + maHo + "',hoTen =  " + "N'"+ hoTen + "' where maNhanKhau =" + "'"+ maNhanKhau +"'";
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         connection.close();
-        return true;
     }
     //lấy danh sách dữ liệu là một list object của đối tượng NhanKhau
-    public List<NhanKhau> getListNhanKhau() throws ClassNotFoundException, SQLException {
+    public List<NhanKhau> getListNhanKhau() throws SQLException {
         List<NhanKhau> list = new ArrayList<>();
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection(null, null);
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         String query = "SELECT * FROM nhan_khau";
-        PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             NhanKhau nhanKhau = new NhanKhau(rs.getString("maNhanKhau"), rs.getString("hoTen"), rs.getString("gioiTinh"), rs.getString("ngaySinh"), rs.getString("queQuan"), rs.getString("ngheNghiep"), rs.getString("maHo"), rs.getString("quanHeVoiChuHo"), rs.getString("ghiChu"));

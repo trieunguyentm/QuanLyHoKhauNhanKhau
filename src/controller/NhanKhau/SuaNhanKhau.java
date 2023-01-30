@@ -1,22 +1,25 @@
 package controller.NhanKhau;
 
-import controller.ControllerNhanKhau;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-
-import javafx.event.ActionEvent;
+import javafx.scene.effect.SepiaTone;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.NhanKhau;
 import services.NhanKhauService;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class SuaNhanKhau {
+public class SuaNhanKhau implements Initializable {
     @FXML
     private TextField tfMaNhanKhau;
     @FXML
@@ -25,10 +28,12 @@ public class SuaNhanKhau {
     private TextField tfMaHo;
     @FXML
     private TextField tfHoTen;
+    @FXML
+    private Button xacNhan;
 
     // Event Listener on Button.onAction
     @FXML
-    public void update(ActionEvent event) throws SQLException, ClassNotFoundException {
+    public void update(ActionEvent event) throws SQLException {
         //kiểm tra xem dữ liệu nhập có hợp lệ
         if(!check()) return;
         //thao tác đến database để update người đc chọn
@@ -73,5 +78,11 @@ public class SuaNhanKhau {
         }
         return true;
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        xacNhan.addEventHandler(MouseEvent.MOUSE_MOVED, event -> xacNhan.setEffect(new SepiaTone()));
+        xacNhan.addEventHandler(MouseEvent.MOUSE_EXITED, event -> xacNhan.setEffect(null));
     }
 }

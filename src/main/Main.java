@@ -17,7 +17,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 440, 430);
         //Stage
         stage.setScene(scene);
-        stage.setTitle("DEMO");
+        stage.setTitle("Quản lý hộ khẩu và nhân khẩu");
         stage.show();
     }
     public static void main(String[] args) {

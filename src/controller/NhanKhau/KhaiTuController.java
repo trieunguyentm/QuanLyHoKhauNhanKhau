@@ -1,21 +1,25 @@
 package controller.NhanKhau;
 
-import controller.ControllerNhanKhau;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.SepiaTone;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.KhaiTu;
 import services.NhanKhauService;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-import javafx.event.ActionEvent;
-
-public class KhaiTuController {
+public class KhaiTuController implements Initializable {
     @FXML
     private TextField tfMaNguoiChet;
     @FXML
@@ -24,11 +28,13 @@ public class KhaiTuController {
     private TextField tfLyDoChet;
     @FXML
     private TextField tfNgayKhai;
+    @FXML
+    private Button khaiBao;
 
     // Event Listener on Button.onAction
     @FXML
-    public void baoTu(ActionEvent event) throws ClassNotFoundException, SQLException {
-        //check xem data từ các textfield người dùng nhập có hợp lệ khônh
+    public void baoTu(ActionEvent event) throws SQLException {
+        //check xem data từ các textfield người dùng nhập có hợp lệ không
         if(!check()) return;
 
         String maNguoiChet = tfMaNguoiChet.getText();
@@ -50,7 +56,7 @@ public class KhaiTuController {
         //regex ma nguoi die
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
         if (!((pattern.matcher(tfMaNguoiChet.getText()).matches()))) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nguoi die hợp lệ!", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã người mất hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
             return false;
@@ -58,7 +64,7 @@ public class KhaiTuController {
         //regex ma nguoi khai
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
         if (!((pattern.matcher(tfMaNguoiKhai.getText()).matches()))) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã nguoi khai hợp lệ!", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào mã người khai hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
             return false;
@@ -66,5 +72,11 @@ public class KhaiTuController {
 
         return true;
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        khaiBao.addEventHandler(MouseEvent.MOUSE_MOVED, event -> khaiBao.setEffect(new SepiaTone()));
+        khaiBao.addEventHandler(MouseEvent.MOUSE_EXITED, event -> khaiBao.setEffect(null));
     }
 }

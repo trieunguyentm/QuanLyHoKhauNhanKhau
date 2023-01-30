@@ -1,5 +1,6 @@
 package services;
 
+import controller.ControllerLogin;
 import main.DataBaseConnection;
 import model.HoKhau;
 
@@ -13,7 +14,7 @@ public class HoKhauService {
     public void chuyenHoKhau(String maHoCu, String maHoMoi, String maNhanKhau) throws SQLException {
         //get connection
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection("sa", "123456");
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //câu lệnh sql để update mã hộ
         String query = "UPDATE nhan_khau " + "set maHo = " + "'" +maHoMoi + "'" + "where maNhanKhau =" + "'" + maNhanKhau +"'";
         //thực thi câu lệnh trên
@@ -29,7 +30,7 @@ public class HoKhauService {
     public void tachHoKhau(HoKhau hoKhau, String maHoCu) throws SQLException {
         //connect to DB
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection("sa", "123456");
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //câu lệnh đê tạo hộ mới
         String query = "insert into ho_khau(maHo, maChuHo)" + " values (?, ?)";
         //thực thi câu lệnh trên
@@ -53,7 +54,7 @@ public class HoKhauService {
     public void suaChuHo(String maHo, String maChuCu, String maChuMoi) throws SQLException {
         //get connection
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection("sa", "123456");
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //lập query chỉnh sửa hộ
         String query = "UPDATE ho_khau " + "set maChuHo =" + "'" + maChuMoi + "'" + " where maHo =" + "'"+ maHo +"'";
         //thực thi câu lệnh trên
@@ -76,7 +77,7 @@ public class HoKhauService {
     public List<HoKhau> getListHoKhau() throws SQLException {
         List<HoKhau> list = new ArrayList<>();
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection("sa", "123456");
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         String query = "SELECT * FROM ho_khau";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();

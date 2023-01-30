@@ -25,6 +25,8 @@ public class ControllerHome implements Initializable {
     @FXML
     private Button taiKhoan;
     @FXML
+    private Button tamTrutamVang;
+    @FXML
     private BorderPane mainPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,6 +51,8 @@ public class ControllerHome implements Initializable {
         khoanThu.addEventHandler(MouseEvent.MOUSE_EXITED, event -> khoanThu.setEffect(null));
         taiKhoan.addEventHandler(MouseEvent.MOUSE_MOVED, event -> taiKhoan.setEffect(new SepiaTone()));
         taiKhoan.addEventHandler(MouseEvent.MOUSE_EXITED, event -> taiKhoan.setEffect(null));
+        tamTrutamVang.addEventHandler(MouseEvent.MOUSE_MOVED, event -> tamTrutamVang.setEffect(new SepiaTone()));
+        tamTrutamVang.addEventHandler(MouseEvent.MOUSE_EXITED, event -> tamTrutamVang.setEffect(null));
     }
     @FXML
         //Set center khi click vào Thống Kê
@@ -62,32 +66,39 @@ public class ControllerHome implements Initializable {
         //Set center khi click vào Hộ Khẩu
     void clickHoKhau() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HoKhau.fxml"));
-        Pane hoKhau;
-        hoKhau = loader.load();
-        mainPane.setCenter(hoKhau);
+        Pane paneHoKhau;
+        paneHoKhau = loader.load();
+        mainPane.setCenter(paneHoKhau);
     }
     @FXML
         //Set center khi click vào Nhân Khẩu
     void clickNhanKhau() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/NhanKhau.fxml"));
-        Pane hoKhau;
-        hoKhau = loader.load();
-        mainPane.setCenter(hoKhau);
+        Pane paneNhanKhau;
+        paneNhanKhau = loader.load();
+        mainPane.setCenter(paneNhanKhau);
     }
     @FXML
         //Set center khi click vào Khoản Thu
     void clickKhoanThu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KhoanThu.fxml"));
-        Pane hoKhau;
-        hoKhau = loader.load();
-        mainPane.setCenter(hoKhau);
+        Pane paneKhoanThu;
+        paneKhoanThu = loader.load();
+        mainPane.setCenter(paneKhoanThu);
     }
     @FXML
         //Set center khi click vào Tài Khoản
     void clickTaiKhoan() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TaiKhoan.fxml"));
-        Pane hoKhau;
-        hoKhau = loader.load();
-        mainPane.setCenter(hoKhau);
+        Pane paneTaiKhoan;
+        paneTaiKhoan = loader.load();
+        mainPane.setCenter(paneTaiKhoan);
+    }
+    @FXML
+    void clickTamTruTamVang() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TamTruTamVang.fxml"));
+        Pane paneTTTV;
+        paneTTTV = loader.load();
+        mainPane.setCenter(paneTTTV);
     }
 }

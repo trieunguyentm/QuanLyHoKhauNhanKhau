@@ -1,28 +1,27 @@
 package controller.NhanKhau;
 
 import controller.ControllerNhanKhau;
-import javafx.fxml.FXML;
-
-import javafx.scene.Node;
-import javafx.scene.control.TextField;
-
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.effect.SepiaTone;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.NhanKhau;
 import services.NhanKhauService;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-
-public class ThemNhanKhau {
+public class ThemNhanKhau implements Initializable {
     @FXML
     private TextField tfMaNhanKhau;
     @FXML
@@ -39,10 +38,12 @@ public class ThemNhanKhau {
     private TextField tfMaHo;
     @FXML
     private TextField tfQuanHeVoiChuHo;
+    @FXML
+    private Button xacNhanThongTin;
 
     // Event Listener on Button.onAction
     @FXML
-    public void add(ActionEvent event) throws SQLException, ClassNotFoundException {
+    public void add(ActionEvent event) throws SQLException {
         //kiểm tra dữ liệu đầu vào có hợp lệ
         if(!check()) return;
         //nếu hợp lệ, lấy dữ liệu đó
@@ -124,5 +125,11 @@ public class ThemNhanKhau {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        xacNhanThongTin.addEventHandler(MouseEvent.MOUSE_MOVED, event -> xacNhanThongTin.setEffect(new SepiaTone()));
+        xacNhanThongTin.addEventHandler(MouseEvent.MOUSE_EXITED, event -> xacNhanThongTin.setEffect(null));
     }
 }

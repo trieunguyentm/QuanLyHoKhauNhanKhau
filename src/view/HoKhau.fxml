@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerHoKhau">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerHoKhau">
     <TableView fx:id="tvHoKhau" layoutX="20.0" layoutY="89.0" prefHeight="460.0" prefWidth="760.0" style="-fx-background-color: #CCFFFF;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
         <columns>
             <TableColumn fx:id="colMaHo" prefWidth="250.0" text=" Mã hộ khẩu" />

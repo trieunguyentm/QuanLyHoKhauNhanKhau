@@ -8,30 +8,57 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="575.0" style="-fx-background-color: #CCFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhanKhau.ThemNhanKhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="575.0" style="-fx-background-color: #CCCCFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhanKhau.ThemNhanKhau">
    <children>
-      <Label alignment="CENTER" layoutX="-2.0" layoutY="37.0" prefHeight="40.0" prefWidth="600.0" text="Thêm nhân khẩu" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="37.0" prefHeight="40.0" prefWidth="600.0" style="-fx-text-fill: #0066FF;" text="Thêm nhân khẩu" textAlignment="CENTER">
          <font>
-            <Font name="System Bold Italic" size="25.0" />
+            <Font name="Arial Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="118.0" layoutY="102.0" text="mã" />
-      <Label layoutX="100.0" layoutY="146.0" text="Họ và tên" />
-      <Label layoutX="100.0" layoutY="192.0" text="giới tính" />
-      <Label layoutX="97.0" layoutY="244.0" text="ngày sinh" />
-      <Label layoutX="97.0" layoutY="287.0" text="quê quán" />
-      <TextField fx:id="tfMaNhanKhau" layoutX="224.0" layoutY="98.0" />
-      <TextField fx:id="tfHoTen" layoutX="224.0" layoutY="142.0" />
-      <TextField fx:id="tfGioiTinh" layoutX="224.0" layoutY="188.0" />
-      <TextField fx:id="tfNgaySinh" layoutX="224.0" layoutY="240.0" />
-      <TextField fx:id="tfQueQuan" layoutX="224.0" layoutY="283.0" />
-      <Button layoutX="270.0" layoutY="484.0" mnemonicParsing="false" onAction="#add" text="confirm" />
-      <TextField fx:id="tfNgheNghiep" layoutX="226.0" layoutY="327.0" />
-      <TextField fx:id="tfMaHo" layoutX="226.0" layoutY="371.0" />
-      <TextField fx:id="tfQuanHeVoiChuHo" layoutX="226.0" layoutY="418.0" />
-      <Label layoutX="93.0" layoutY="331.0" text="nghề nghiệp" />
-      <Label layoutX="109.0" layoutY="388.0" text="mã hộ" />
-      <Label layoutX="104.0" layoutY="435.0" text="quan hệ" />
+      <Label layoutX="105.0" layoutY="105.0" text="Mã nhân khẩu">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="145.0" text="Họ và tên">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="185.0" text="Giới tính">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="225.0" text="Ngày sinh">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="265.0" text="Quê quán">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="305.0" text="Nghề nghiệp">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="345.0" text="Mã hộ">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="105.0" layoutY="385.0" text="Quan hệ">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="tfMaNhanKhau" layoutX="225.0" layoutY="100.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfHoTen" layoutX="225.0" layoutY="140.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfGioiTinh" layoutX="225.0" layoutY="180.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfNgaySinh" layoutX="225.0" layoutY="220.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfQueQuan" layoutX="225.0" layoutY="260.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfNgheNghiep" layoutX="225.0" layoutY="300.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfMaHo" layoutX="225.0" layoutY="340.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <TextField fx:id="tfQuanHeVoiChuHo" layoutX="225.0" layoutY="380.0" style="-fx-border-color: #36d5ff; -fx-border-width: 0 0 2 0; -fx-background-color: transparent;" />
+      <Button layoutX="228.0" layoutY="484.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #00FF00;" text="Xác nhận thông tin" fx:id="xacNhanThongTin">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></Button>
    </children>
    <effect>
       <InnerShadow>

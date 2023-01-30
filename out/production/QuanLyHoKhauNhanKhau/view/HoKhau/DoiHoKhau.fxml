@@ -7,32 +7,32 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CCCCFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HoKhau.ChuyenHo">
-   <children>
-      <Button layoutX="230.0" layoutY="266.0" mnemonicParsing="false" onAction="#chuyenHo" style="-fx-background-color: #00FF00;" text="Xác nhận thay đổi" fx:id="xacNhanThayDoi">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font></Button>
-      <TextField fx:id="tfMaNhanKhau" layoutX="225.0" layoutY="135.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: #36d5ff;" />
-      <TextField fx:id="tfMaHoCu" layoutX="225.0" layoutY="175.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: #36d5ff;" />
-      <Label layoutX="90.0" layoutY="140.0" style="-fx-text-fill: #0066FF;" text="Nhập mã nhân khẩu">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font></Label>
-      <TextField fx:id="tfMaHoMoi" layoutX="225.0" layoutY="215.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: #36d5ff;" />
-      <Label alignment="CENTER" layoutY="36.0" prefHeight="55.0" prefWidth="600.0" style="-fx-text-fill: #0066FF;" text="Đổi hộ khẩu">
-         <font>
-            <Font name="Arial Bold" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="180.0" style="-fx-text-fill: #0066FF;" text="Nhập mã hộ khẩu cũ">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="220.0" style="-fx-text-fill: #0066FF;" text="Nhập mã hộ khẩu mới">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-   </children>
+   <Button layoutX="230.0" layoutY="266.0" mnemonicParsing="false" onAction="#chuyenHo" style="-fx-background-color: #00FF00;" text="Xác nhận thay đổi" fx:id="xacNhanThayDoi">
+      <font>
+         <Font name="Arial Bold" size="14.0" />
+      </font>
+   </Button>
+   <TextField fx:id="tfMaNhanKhau" layoutX="225.0" layoutY="135.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: #36d5ff;" />
+   <TextField fx:id="tfMaHoCu" layoutX="225.0" layoutY="175.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: #36d5ff;" />
+   <Label layoutX="90.0" layoutY="140.0" style="-fx-text-fill: #0066FF;" text="Nhập mã nhân khẩu">
+      <font>
+         <Font name="Arial Bold" size="12.0" />
+      </font>
+   </Label>
+   <TextField fx:id="tfMaHoMoi" layoutX="225.0" layoutY="215.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: #36d5ff;" />
+   <Label alignment="CENTER" layoutY="36.0" prefHeight="55.0" prefWidth="600.0" style="-fx-text-fill: #0066FF;" text="Đổi hộ khẩu">
+      <font>
+         <Font name="Arial Bold" size="25.0" />
+      </font>
+   </Label>
+   <Label layoutX="90.0" layoutY="180.0" style="-fx-text-fill: #0066FF;" text="Nhập mã hộ khẩu cũ">
+      <font>
+         <Font name="Arial Bold" size="12.0" />
+      </font>
+   </Label>
+   <Label layoutX="90.0" layoutY="220.0" style="-fx-text-fill: #0066FF;" text="Nhập mã hộ khẩu mới">
+      <font>
+         <Font name="Arial Bold" size="12.0" />
+      </font>
+   </Label>
 </AnchorPane>
