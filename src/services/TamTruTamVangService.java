@@ -1,5 +1,6 @@
 package services;
 
+import controller.ControllerLogin;
 import main.DataBaseConnection;
 import model.TamTru;
 import model.TamVang;
@@ -13,7 +14,7 @@ public class TamTruTamVangService {
     public void themTamTru(TamTru tamTru) throws SQLException {
         //get connection
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection("sa", "123456");
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //query như trong thực hành SQL, thêm người vào bảng nhan_khau
         String query = "insert into tam_tru(hoTen ,CMND,  soDienThoaiNguoiDangKy, tuNgay, denNgay, lyDo)" + " values (?, ?, ?, ?, ?, ?)";
         //mấy cái lằng nhà lằng nhằng để cho câu lệnh trên được thực hiện vào database (nó sẽ làm câu lệnh thực hiện giống việc chạy sqlserver managerment studio
