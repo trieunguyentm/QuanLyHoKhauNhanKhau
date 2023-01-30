@@ -6,32 +6,42 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerTamTruTamVang">
-   <AnchorPane layoutX="43.0" layoutY="192.0" prefHeight="600.0" prefWidth="500.0" style="-fx-border-color: #36d5ff; -fx-border-radius: 80 80 80 80; -fx-border-width: 20 20 20 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <VBox prefHeight="600.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="0.0">
-            <children>
-               <Button fx:id="btDKTT" mnemonicParsing="false" onAction="#dkTamTru" prefHeight="150.0" prefWidth="220.0" style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-border-radius: 100 0 100 0; -fx-background-color: transparent;" text="ĐĂNG KÝ TẠM TRÚ">
-                  <font>
-                     <Font name="Arial Bold" size="10.0" />
-                  </font>
-               </Button>
-               <Button fx:id="btDKTV" mnemonicParsing="false" onAction="#dkTamVang" prefHeight="150.0" prefWidth="220.0" style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-background-color: transparent; -fx-border-radius: 100 0 100 0;" text="ĐĂNG KÝ TẠM VẮNG">
-                  <font>
-                     <Font name="Arial Bold" size="10.0" />
-                  </font>
-               </Button>
-               <Button fx:id="btTCTT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#traCuuTamtru" prefHeight="150.0" prefWidth="220.0" style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-background-color: transparent; -fx-border-radius: 100 0 100 0;" text="TRA CỨU THÔNG TIN TẠM TRÚ">
-                  <font>
-                     <Font name="Arial Bold" size="10.0" />
-                  </font>
-               </Button>
-               <Button fx:id="btTCTV" mnemonicParsing="false" onAction="#traCuuTamVang" prefHeight="150.0" prefWidth="220.0" style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-background-color: transparent; -fx-border-radius: 100 0 100 0;" text="TRA CỨU THÔNG TIN TẠM VẮNG">
-                  <font>
-                     <Font name="Arial Bold" size="10.0" />
-                  </font>
-               </Button>
-            </children>
-         </VBox>
-      </children>
+   <AnchorPane layoutX="43.0" layoutY="192.0" prefHeight="600.0" prefWidth="500.0"
+               style="-fx-border-color: #36d5ff; -fx-border-radius: 80 80 80 80; -fx-border-width: 20 20 20 20;"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0"
+               AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="600.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0"
+            AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="0.0">
+         <Button fx:id="btDKTT" mnemonicParsing="false" onAction="#dkTamTru" prefHeight="150.0" prefWidth="220.0"
+                 style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-border-radius: 100 0 100 0; -fx-background-color: transparent;"
+                 text="ĐĂNG KÝ TẠM TRÚ">
+            <font>
+               <Font name="Arial Bold" size="10.0"/>
+            </font>
+         </Button>
+         <Button fx:id="btDKTV" mnemonicParsing="false" onAction="#dkTamVang" prefHeight="150.0" prefWidth="220.0"
+                 style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-background-color: transparent; -fx-border-radius: 100 0 100 0;"
+                 text="ĐĂNG KÝ TẠM VẮNG">
+            <font>
+               <Font name="Arial Bold" size="10.0"/>
+            </font>
+         </Button>
+         <Button fx:id="btTCTT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#traCuuTamtru"
+                 prefHeight="150.0" prefWidth="220.0"
+                 style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-background-color: transparent; -fx-border-radius: 100 0 100 0;"
+                 text="TRA CỨU THÔNG TIN TẠM TRÚ">
+            <font>
+               <Font name="Arial Bold" size="10.0"/>
+            </font>
+         </Button>
+         <Button fx:id="btTCTV" mnemonicParsing="false" onAction="#traCuuTamVang" prefHeight="150.0"
+                 prefWidth="220.0"
+                 style="-fx-text-fill: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-color: #36d5ff; -fx-background-color: transparent; -fx-border-radius: 100 0 100 0;"
+                 text="TRA CỨU THÔNG TIN TẠM VẮNG">
+            <font>
+               <Font name="Arial Bold" size="10.0"/>
+            </font>
+         </Button>
+      </VBox>
    </AnchorPane>
 </AnchorPane>
