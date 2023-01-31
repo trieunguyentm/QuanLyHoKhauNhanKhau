@@ -26,6 +26,7 @@ import model.NhanKhau;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import services.NhanKhauService;
+import services.Util;
 
 public class ControllerNhanKhau implements Initializable{
     @FXML
@@ -168,7 +169,9 @@ public class ControllerNhanKhau implements Initializable{
         int index = 0;
         List<NhanKhau> listHoKhauModelsSearch = new ArrayList<>();
         for (NhanKhau nhanKhau : listNhanKhau) {
-            if (nhanKhau.getHoTen().toLowerCase().equals(input.toLowerCase())) {
+            String str1 = nhanKhau.getHoTen().toLowerCase();
+            String str2 = input.toLowerCase();
+            if (Util.checkTwoStringButNotLcs(str2, str1)) {
                 listHoKhauModelsSearch.add(nhanKhau);
                 index++;
             }
