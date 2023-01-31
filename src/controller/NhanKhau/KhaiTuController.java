@@ -42,9 +42,17 @@ public class KhaiTuController implements Initializable {
         String LyDoChet = tfLyDoChet.getText();
         String NgayKhai = tfNgayKhai.getText();
         //tạo khai tử object, truyền vào class service để thực hiện thao tác với database
-        KhaiTu baotu = new KhaiTu(maNguoiKhau, maNguoiChet, NgayKhai, LyDoChet);
-        NhanKhauService sv = new NhanKhauService();
-        sv.baoTu(baotu);
+        try {
+            KhaiTu baotu = new KhaiTu(maNguoiKhau, maNguoiChet, NgayKhai, LyDoChet);
+            NhanKhauService sv = new NhanKhauService();
+            sv.baoTu(baotu);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

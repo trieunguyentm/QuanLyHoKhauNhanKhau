@@ -2,14 +2,13 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +21,7 @@ import services.HoKhauService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -111,5 +111,46 @@ public class ControllerHoKhau implements Initializable {
         btDoiChuHo.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btDoiChuHo.setEffect(null));
         btChuyenHo.addEventHandler(MouseEvent.MOUSE_MOVED, event -> btChuyenHo.setEffect(new SepiaTone()));
         btChuyenHo.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btChuyenHo.setEffect(null));
+    }
+
+    //search function
+    @FXML
+    private TextField tfSearch;
+    //private ObservableList<TamTru> listValueTableView;
+    @FXML
+    public void search(ActionEvent event) throws SQLException, ClassNotFoundException {
+        ObservableList<HoKhau> listValueTableView_tmp = null;
+        String input = tfSearch.getText();
+        List<HoKhau> listHoKhau = new HoKhauService().getListHoKhau();
+        ObservableList<HoKhau> listValueTableView = FXCollections.observableArrayList(listHoKhau);
+
+        if (input.length() == 0) {
+            tvHoKhau.setItems(listValueTableView);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+        int index = 0;
+        List<HoKhau> listHoKhauModelsSearch = new ArrayList<>();
+        for ( HoKhau hoKhau : listHoKhau) {
+            if (hoKhau.getMaHo().toLowerCase().equals(input.toLowerCase())) {
+                listHoKhauModelsSearch.add(hoKhau);
+                index++;
+            }
+        }
+        listValueTableView_tmp = FXCollections.observableArrayList(listHoKhauModelsSearch);
+        tvHoKhau.setItems(listValueTableView_tmp);
+
+        // neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
+        // tim thay
+        if (index == 0) {
+            tvHoKhau.setItems(listValueTableView); // hien thi toan bo thong tin
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Không tìm thấy thông tin!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+
     }
 }

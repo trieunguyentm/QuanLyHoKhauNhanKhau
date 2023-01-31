@@ -37,7 +37,16 @@ public class ChuyenHo implements Initializable {
         String maHoCu = tfMaHoCu.getText();
         String maHoMoi = tfMaHoMoi.getText();
         //thao tác đến database sau khi lấy được dữ liệu
-        new HoKhauService().chuyenHoKhau(maHoCu, maHoMoi, maNhanKhau);
+
+        try {
+            new HoKhauService().chuyenHoKhau(maHoCu, maHoMoi, maNhanKhau);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
         return true;

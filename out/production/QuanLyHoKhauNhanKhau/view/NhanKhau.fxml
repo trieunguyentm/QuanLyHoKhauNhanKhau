@@ -4,61 +4,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane accessibleRole="BUTTON" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.ControllerNhanKhau">
-   <TableView fx:id="tvNhanKhau" layoutY="89.0" prefHeight="500.0" prefWidth="800.0"
-              style="-fx-background-color: #CCFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+<AnchorPane accessibleRole="BUTTON" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerNhanKhau">
+   <TableView fx:id="tvNhanKhau" layoutX="-8.0" layoutY="160.0" prefHeight="446.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="160.0">
       <columns>
-         <TableColumn fx:id="colID" prefWidth="75.0" text="ID"/>
-         <TableColumn fx:id="colHoVaTen" prefWidth="155.0" text="Họ và tên"/>
-         <TableColumn fx:id="colTuoi" prefWidth="60.0" text="Tuổi"/>
-         <TableColumn fx:id="colGioiTinh" prefWidth="90.0" text="Giới tính"/>
-         <TableColumn fx:id="colMaHo" prefWidth="100.0" text="Mã hộ"/>
-         <TableColumn fx:id="colQuanHe" minWidth="0.0" prefWidth="120.0" text="Quan hệ"/>
-         <TableColumn fx:id="colGhiChu" minWidth="0.0" prefWidth="200.0" text="Ghi chú"/>
+         <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
+         <TableColumn fx:id="colHoVaTen" prefWidth="155.0" text="Họ và tên" />
+         <TableColumn fx:id="colTuoi" prefWidth="60.0" text="Tuổi" />
+         <TableColumn fx:id="colGioiTinh" prefWidth="88.0" text="Giới tính" />
+         <TableColumn fx:id="colMaHo" prefWidth="102.0" text="Mã hộ" />
+         <TableColumn fx:id="colQuanHe" minWidth="0.0" prefWidth="120.0" text="Quan hệ" />
+         <TableColumn fx:id="colGhiChu" minWidth="0.0" prefWidth="200.0" text="Ghi chú" />
       </columns>
       <effect>
-         <InnerShadow/>
+         <InnerShadow />
       </effect>
    </TableView>
-   <HBox layoutX="242.0" layoutY="-25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CCFFFF;"
-         AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-         AnchorPane.topAnchor="0.0">
-      <Button fx:id="btThemNhanKhau" accessibleRole="CONTEXT_MENU" mnemonicParsing="false" onAction="#themNhanKhau"
-              prefHeight="30.0" prefWidth="266.7"
-              style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;"
-              text="Thêm nhân khẩu">
+   <HBox layoutX="242.0" layoutY="-25.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CCFFFF;" AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="btThemNhanKhau" accessibleRole="CONTEXT_MENU" mnemonicParsing="false" onAction="#themNhanKhau" prefHeight="30.0" prefWidth="266.7" style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;" text="Thêm nhân khẩu">
          <font>
-            <Font name="Arial Bold" size="12.0"/>
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btBaoTu" mnemonicParsing="false" onAction="#baoTu" prefHeight="30.0" prefWidth="266.7"
-              style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;"
-              text="Báo tử">
+      <Button fx:id="btBaoTu" mnemonicParsing="false" onAction="#baoTu" prefHeight="30.0" prefWidth="266.7" style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;" text="Báo tử">
          <font>
-            <Font name="Arial Bold" size="12.0"/>
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btSuaThongTin" mnemonicParsing="false" onAction="#suaThongTin" prefHeight="30.0"
-              prefWidth="266.6"
-              style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;"
-              text="Sửa thông tin">
+      <Button fx:id="btSuaThongTin" mnemonicParsing="false" onAction="#suaThongTin" prefHeight="30.0" prefWidth="266.6" style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;" text="Sửa thông tin">
          <font>
-            <Font name="Arial Bold" size="12.0"/>
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
    </HBox>
    <Label layoutX="246.0" layoutY="44.0" style="-fx-text-fill: #36d5ff;" text="Danh sách các nhân khẩu">
       <font>
-         <Font name="Arial Bold" size="25.0"/>
+         <Font name="Arial Bold" size="25.0" />
       </font>
    </Label>
+   <TextField fx:id="tfSearch" layoutY="104.0" prefHeight="25.0" prefWidth="236.0" promptText="nhập tên để tìm kiếm" />
+   <Button layoutX="276.0" layoutY="104.0" mnemonicParsing="false" onAction="#search" text="Button" />
 </AnchorPane>

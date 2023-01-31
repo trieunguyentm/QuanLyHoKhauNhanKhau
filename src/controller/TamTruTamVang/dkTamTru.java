@@ -3,7 +3,9 @@ import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
@@ -44,8 +46,17 @@ public class dkTamTru implements Initializable {
         String liDo = tfLiDo.getText();
         String sdt = tfSDT.getText();
 
-        TamTru tamTru = new TamTru(hoTen, cmnd,sdt, tuNgay,denNgay, liDo);
-        new TamTruTamVangService().themTamTru(tamTru);
+
+        try {
+            TamTru tamTru = new TamTru(hoTen, cmnd,sdt, tuNgay,denNgay, liDo);
+            new TamTruTamVangService().themTamTru(tamTru);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

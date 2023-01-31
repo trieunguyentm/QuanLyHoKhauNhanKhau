@@ -1,5 +1,6 @@
 package controller;
 import controller.NhanKhau.SuaNhanKhau;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,6 +8,7 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -145,4 +147,45 @@ public class ControllerNhanKhau implements Initializable{
         btSuaThongTin.addEventHandler(MouseEvent.MOUSE_MOVED, event -> btSuaThongTin.setEffect(new SepiaTone()));
         btSuaThongTin.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btSuaThongTin.setEffect(null));
     }
+
+    @FXML
+    private TextField tfSearch;
+    //private ObservableList<TamTru> listValueTableView;
+    @FXML
+    public void search(ActionEvent event) throws SQLException, ClassNotFoundException {
+
+        ObservableList<NhanKhau> listValueTableView_tmp = null;
+        String input = tfSearch.getText();
+        List<NhanKhau> listNhanKhau = new NhanKhauService().getListNhanKhau();
+        ObservableList<NhanKhau> listValueTableView = FXCollections.observableArrayList(listNhanKhau);
+        if (input.length() == 0) {
+            tvNhanKhau.setItems(listValueTableView);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+        int index = 0;
+        List<NhanKhau> listHoKhauModelsSearch = new ArrayList<>();
+        for (NhanKhau nhanKhau : listNhanKhau) {
+            if (nhanKhau.getHoTen().toLowerCase().equals(input.toLowerCase())) {
+                listHoKhauModelsSearch.add(nhanKhau);
+                index++;
+            }
+        }
+        listValueTableView_tmp = FXCollections.observableArrayList(listHoKhauModelsSearch);
+        tvNhanKhau.setItems(listValueTableView_tmp);
+
+        // neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
+        // tim thay
+        if (index == 0) {
+            tvNhanKhau.setItems(listValueTableView); // hien thi toan bo thong tin
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Không tìm thấy thông tin!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+
+    }
+
 }

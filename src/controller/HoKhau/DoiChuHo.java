@@ -34,11 +34,18 @@ public class DoiChuHo implements Initializable {
                 //method check() phía dưới phục vụ việc kiểm tra data người dùng nhập vào, nếu sai thì không làm gì cả
                 if(!check()) return;
                 //sửa chủ hộ
-                new HoKhauService().suaChuHo(tfMaHo.getText(), tfMaChuCu.getText(), tfMaChuMoi.getText());
-                //alert cap nhat quan he
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
-                alert.setHeaderText(null);
-                alert.showAndWait();
+                try {
+                        new HoKhauService().suaChuHo(tfMaHo.getText(), tfMaChuCu.getText(), tfMaChuMoi.getText());
+                        //alert cap nhat quan he
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                }
+                catch (Exception e) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                }
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
