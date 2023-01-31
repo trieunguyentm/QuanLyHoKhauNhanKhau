@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -14,17 +15,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.HoKhau;
 import model.NhanKhau;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
+import model.TamTru;
 import services.NhanKhauService;
+import services.TamTruTamVangService;
 
 public class ControllerNhanKhau implements Initializable{
     @FXML
@@ -131,6 +131,46 @@ public class ControllerNhanKhau implements Initializable{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+    }
+
+    //search function
+    @FXML
+    private TextField tfSearch;
+    //private ObservableList<TamTru> listValueTableView;
+    @FXML
+    public void search(ActionEvent event) throws SQLException, ClassNotFoundException {
+        ObservableList<NhanKhau> listValueTableView_tmp = null;
+        String input = tfSearch.getText();
+        listNhanKhau = new NhanKhauService().getListNhanKhau();
+
+        if (input.length() == 0) {
+            tvNhanKhau.setItems(listValueTableView);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+        int index = 0;
+        List<NhanKhau> listHoKhauModelsSearch = new ArrayList<>();
+        for (NhanKhau nhanKhau : listNhanKhau) {
+            if (nhanKhau.getHoTen().toLowerCase().equals(input.toLowerCase())) {
+                listHoKhauModelsSearch.add(nhanKhau);
+                index++;
+            }
+        }
+        listValueTableView_tmp = FXCollections.observableArrayList(listHoKhauModelsSearch);
+        tvNhanKhau.setItems(listValueTableView_tmp);
+
+        // neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
+        // tim thay
+        if (index == 0) {
+            tvNhanKhau.setItems(listValueTableView); // hien thi toan bo thong tin
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Không tìm thấy thông tin!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
 
     }
 }
