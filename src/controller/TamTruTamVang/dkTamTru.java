@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import model.NhanKhau;
 import model.TamTru;
+import services.NhanKhauService;
 import services.TamTruTamVangService;
 
 import java.sql.SQLException;
@@ -41,9 +43,16 @@ public class dkTamTru {
         String denNgay = tfDenNgay.getText();
         String liDo = tfLiDo.getText();
         String sdt = tfSDT.getText();
+        try {
+            TamTru tamTru = new TamTru(hoTen, cmnd,sdt, tuNgay,denNgay, liDo);
+            new TamTruTamVangService().themTamTru(tamTru);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
 
-        TamTru tamTru = new TamTru(hoTen, cmnd,sdt, tuNgay,denNgay, liDo);
-        new TamTruTamVangService().themTamTru(tamTru);
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

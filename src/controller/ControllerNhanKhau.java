@@ -22,9 +22,7 @@ import model.HoKhau;
 import model.NhanKhau;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import model.TamTru;
 import services.NhanKhauService;
-import services.TamTruTamVangService;
 
 public class ControllerNhanKhau implements Initializable{
     @FXML
@@ -134,16 +132,16 @@ public class ControllerNhanKhau implements Initializable{
 
     }
 
-    //search function
     @FXML
     private TextField tfSearch;
     //private ObservableList<TamTru> listValueTableView;
     @FXML
     public void search(ActionEvent event) throws SQLException, ClassNotFoundException {
+
         ObservableList<NhanKhau> listValueTableView_tmp = null;
         String input = tfSearch.getText();
-        listNhanKhau = new NhanKhauService().getListNhanKhau();
-
+        List<NhanKhau> listNhanKhau = new NhanKhauService().getListNhanKhau();
+        ObservableList<NhanKhau> listValueTableView = FXCollections.observableArrayList(listNhanKhau);
         if (input.length() == 0) {
             tvNhanKhau.setItems(listValueTableView);
             Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
@@ -173,4 +171,5 @@ public class ControllerNhanKhau implements Initializable{
 
 
     }
+
 }

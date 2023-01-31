@@ -10,7 +10,9 @@ import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import model.NhanKhau;
 import model.TamVang;
+import services.NhanKhauService;
 import services.TamTruTamVangService;
 
 import java.sql.SQLException;
@@ -40,8 +42,16 @@ public class dkTamVang {
         String denNgay = tfDenNgay.getText();
         String liDo = tfLiDo.getText();
 
-        TamVang tamVang = new TamVang(maNhanKhau, noiTamTru, tuNgay, denNgay, liDo);
-        new TamTruTamVangService().themTamVang(tamVang);
+        try {
+            TamVang tamVang = new TamVang(maNhanKhau, noiTamTru, tuNgay, denNgay, liDo);
+            new TamTruTamVangService().themTamVang(tamVang);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
 
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
