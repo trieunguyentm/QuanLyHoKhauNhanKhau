@@ -15,7 +15,6 @@ import model.KhaiTu;
 import services.NhanKhauService;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -33,7 +32,7 @@ public class KhaiTuController implements Initializable {
 
     // Event Listener on Button.onAction
     @FXML
-    public void baoTu(ActionEvent event) throws SQLException {
+    public void baoTu(ActionEvent event) {
         //check xem data từ các textfield người dùng nhập có hợp lệ không
         if(!check()) return;
 
@@ -42,9 +41,17 @@ public class KhaiTuController implements Initializable {
         String LyDoChet = tfLyDoChet.getText();
         String NgayKhai = tfNgayKhai.getText();
         //tạo khai tử object, truyền vào class service để thực hiện thao tác với database
-        KhaiTu baotu = new KhaiTu(maNguoiKhau, maNguoiChet, NgayKhai, LyDoChet);
-        NhanKhauService sv = new NhanKhauService();
-        sv.baoTu(baotu);
+        try {
+            KhaiTu baotu = new KhaiTu(maNguoiKhau, maNguoiChet, NgayKhai, LyDoChet);
+            NhanKhauService sv = new NhanKhauService();
+            sv.baoTu(baotu);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

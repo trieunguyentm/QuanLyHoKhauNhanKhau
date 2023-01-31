@@ -57,7 +57,7 @@ public class TraCuuTamTru implements Initializable {
         int index = 0;
         List<TamTru> listHoKhauModelsSearch = new ArrayList<>();
         for (TamTru tamTru : listTamTru) {
-            if (tamTru.getHoTen().equals(input)) {
+            if (tamTru.getHoTen().contains(input)) {
                 listHoKhauModelsSearch.add(tamTru);
                 index++;
             }

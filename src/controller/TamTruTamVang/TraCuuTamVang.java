@@ -55,7 +55,7 @@ public class TraCuuTamVang implements  Initializable{
         int index = 0;
         List<TamVang> listHoKhauModelsSearch = new ArrayList<>();
         for (TamVang tamVang : listTamVang) {
-            if (tamVang.getMaNhanKhau().equals(input)) {
+            if (tamVang.getMaNhanKhau().contains(input)) {
                 listHoKhauModelsSearch.add(tamVang);
                 index++;
             }

@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #743abf;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerKhoanThu">
-   <Label layoutX="371.0" layoutY="291.0" text="Khoản Thu" />
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerKhoanThu">
+   <TableView fx:id="tvKhoanThu" layoutX="280.0" layoutY="191.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="150.0">
+     <columns>
+       <TableColumn fx:id="maKhoanThu" prefWidth="104.79998779296875" text="Mã khoản thu" />
+         <TableColumn fx:id="tenKhoanThu" prefWidth="219.99998474121094" text="Tên khoản thu" />
+         <TableColumn fx:id="soTienCanThu" prefWidth="132.79998779296875" text="Số tiền cần thu" />
+         <TableColumn fx:id="maHo" prefWidth="166.4000244140625" text="Mã hộ" />
+         <TableColumn fx:id="ngayNop" prefWidth="135.20001220703125" text="Ngày nộp" />
+     </columns>
+   </TableView>
+   <Label layoutX="261.0" layoutY="43.0" style="-fx-text-fill: #36d5ff;" text="Danh sách các khoản thu">
+      <font>
+         <Font name="Arial Bold" size="25.0" />
+      </font>
+   </Label>
+   <HBox layoutX="271.0" layoutY="-27.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Button fx:id="btThem" mnemonicParsing="false" onAction="#clickThem" prefHeight="30.0" prefWidth="266.7" style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;" text="Thêm khoản thu">
+            <font>
+               <Font name="Arial Bold" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="btXoa" mnemonicParsing="false" onAction="#clickXoa" prefHeight="30.0" prefWidth="266.7" style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;" text="Xóa khoản thu">
+            <font>
+               <Font name="Arial Bold" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="btSua" mnemonicParsing="false" onAction="#clickSua" prefHeight="30.0" prefWidth="266.7" style="-fx-text-fill: #36d5ff; -fx-background-color: #EEEEEE; -fx-border-color: #36d5ff; -fx-border-width: 2 2 2 2; -fx-border-radius: 20 0 20 0;" text="Sửa khoản thu">
+            <font>
+               <Font name="Arial Bold" size="12.0" />
+            </font>
+         </Button>
+      </children>
+   </HBox>
+   <TextField fx:id="tfTimKiem" layoutX="20.0" layoutY="111.0" promptText="Nhập mã khoản thu" />
+   <Button fx:id="btTimKiem" layoutX="181.0" layoutY="111.0" mnemonicParsing="false" onAction="#search" text="Tìm kiếm theo mã khoản thu" />
 </AnchorPane>

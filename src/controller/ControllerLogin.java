@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
@@ -113,5 +110,8 @@ public class ControllerLogin implements Initializable {
         userLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> userLogin.setEffect(null));
         passLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> passLogin.setEffect(new SepiaTone()));
         passLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> passLogin.setEffect(null));
+        //Tooltip
+        userLogin.setTooltip(new Tooltip("Nhập thông tin tài khoản"));
+        passLogin.setTooltip(new Tooltip("Nhập thông tin mật khẩu"));
     }
 }

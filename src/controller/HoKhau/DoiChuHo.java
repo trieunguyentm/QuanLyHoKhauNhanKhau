@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import services.HoKhauService;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -30,15 +29,22 @@ public class DoiChuHo implements Initializable {
 
         // Event Listener on Button.onAction
         @FXML
-        public void doiChuHo(ActionEvent event) throws SQLException {
+        public void doiChuHo(ActionEvent event) {
                 //method check() phía dưới phục vụ việc kiểm tra data người dùng nhập vào, nếu sai thì không làm gì cả
                 if(!check()) return;
                 //sửa chủ hộ
-                new HoKhauService().suaChuHo(tfMaHo.getText(), tfMaChuCu.getText(), tfMaChuMoi.getText());
-                //alert cap nhat quan he
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
-                alert.setHeaderText(null);
-                alert.showAndWait();
+                try {
+                        new HoKhauService().suaChuHo(tfMaHo.getText(), tfMaChuCu.getText(), tfMaChuMoi.getText());
+                        //alert cap nhat quan he
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                }
+                catch (Exception e) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                }
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();

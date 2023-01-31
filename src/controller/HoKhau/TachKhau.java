@@ -1,14 +1,13 @@
 package controller.HoKhau;
-import javafx.fxml.FXML;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-
-import javafx.event.ActionEvent;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -16,7 +15,6 @@ import model.HoKhau;
 import services.HoKhauService;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -34,7 +32,7 @@ public class TachKhau implements Initializable {
 
     // Event Listener on Button.onAction
     @FXML
-    public void xacNhanTachKhau(ActionEvent event) throws SQLException {
+    public void xacNhanTachKhau(ActionEvent event) {
         //method check() phía dưới phục vụ việc kiểm tra data người dùng nhập vào, nếu sai thì không làm gì cả
         if(!check()) return;
 
@@ -48,19 +46,27 @@ public class TachKhau implements Initializable {
         //- những người còn lại sẽ sửa thông tin maHo của họ
 
         //tao ho khau moi voi chu ho moi, sau đó truyền dữ liệu này vào class service để thao tác tới database
-        HoKhau hoKhau = new HoKhau(maHoMoi, maChuMoi);
-        new HoKhauService().tachHoKhau(hoKhau, maHoCu);
+        try {
+            HoKhau hoKhau = new HoKhau(maHoMoi, maChuMoi);
+            new HoKhauService().tachHoKhau(hoKhau, maHoCu);
 
-        //tach ma cua nhung nguoi muon tach khau tu string
-        String[] toSplit = danhSach.split(" ");
-        //update ho khau cua tung nguoi muốn tách khẩu
-        for (String s : toSplit) {
-            new HoKhauService().chuyenHoKhau(maHoCu, maHoMoi, s);
+            //tach ma cua nhung nguoi muon tach khau tu string
+            String[] toSplit = danhSach.split(" ");
+            //update ho khau cua tung nguoi muốn tách khẩu
+            for (String s : toSplit) {
+                new HoKhauService().chuyenHoKhau(maHoCu, maHoMoi, s);
+            }
+            //thông báo cho người nhập cần cập nhật quan hệ cho các thành viên trong gia đình đó
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
         }
-        //thông báo cho người nhập cần cập nhật quan hệ cho các thành viên trong gia đình đó
-        Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy cập nhật quan hệ của các thành viên hộ trên", ButtonType.OK);
-        alert.setHeaderText(null);
-        alert.showAndWait();
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
         //đóng sence đó
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();

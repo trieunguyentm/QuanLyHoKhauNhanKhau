@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #CCFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerHoKhau">
-    <TableView fx:id="tvHoKhau" layoutX="20.0" layoutY="89.0" prefHeight="460.0" prefWidth="760.0" style="-fx-background-color: #CCFFFF;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+    <TableView fx:id="tvHoKhau" layoutX="20.0" layoutY="132.0" prefHeight="428.0" prefWidth="760.0" style="-fx-background-color: #CCFFFF;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="132.0">
         <columns>
             <TableColumn fx:id="colMaHo" prefWidth="250.0" text=" Mã hộ khẩu" />
             <TableColumn fx:id="colMaChuHo" prefWidth="260.0" text="Mã chủ hộ khẩu" />
@@ -39,7 +40,9 @@
     </HBox>
     <Label layoutX="261.0" layoutY="54.0" style="-fx-text-fill: #36d5ff;" text="Danh sách các hộ khẩu">
         <font>
-          <Font name="Arial Bold" size="25.0" />
+            <Font name="Arial Bold" size="25.0" />
         </font>
     </Label>
+    <TextField fx:id="tfSearch" layoutX="20.0" layoutY="84.0" promptText="Nhập mã hộ khẩu" />
+    <Button layoutX="198.0" layoutY="84.0" mnemonicParsing="false" onAction="#search" text="Search" />
 </AnchorPane>

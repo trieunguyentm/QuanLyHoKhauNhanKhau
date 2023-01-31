@@ -47,17 +47,24 @@ public class ThemNhanKhau implements Initializable {
         //kiểm tra dữ liệu đầu vào có hợp lệ
         if(!check()) return;
         //nếu hợp lệ, lấy dữ liệu đó
-       String ma = tfMaNhanKhau.getText();
-       String hoTen = tfHoTen.getText();
-       String gioiTinh = tfGioiTinh.getText();
-       String ngaySinh = tfNgaySinh.getText();
-       String queQuan = tfQueQuan.getText();
-       String ngheNgiep = tfNgheNghiep.getText();
-       String maHo = tfMaHo.getText();
-       String quanHe = tfQuanHeVoiChuHo.getText();
+        String ma = tfMaNhanKhau.getText();
+        String hoTen = tfHoTen.getText();
+        String gioiTinh = tfGioiTinh.getText();
+        String ngaySinh = tfNgaySinh.getText();
+        String queQuan = tfQueQuan.getText();
+        String ngheNgiep = tfNgheNghiep.getText();
+        String maHo = tfMaHo.getText();
+        String quanHe = tfQuanHeVoiChuHo.getText();
         //tạo đối tượng nhân khẩu để thêm, thực hiện gọi towis class service để thêm người
-        NhanKhau nhanKhau = new NhanKhau(ma, hoTen, gioiTinh, ngaySinh, queQuan, ngheNgiep,maHo, quanHe);
-        new NhanKhauService().add(nhanKhau);
+        try {
+            NhanKhau nhanKhau = new NhanKhau(ma, hoTen, gioiTinh, ngaySinh, queQuan, ngheNgiep, maHo, quanHe);
+            new NhanKhauService().add(nhanKhau);
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
 
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
