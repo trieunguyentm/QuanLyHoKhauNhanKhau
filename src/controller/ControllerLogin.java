@@ -33,6 +33,8 @@ public class ControllerLogin implements Initializable {
     @FXML
     private Button buttonLogin;
     @FXML
+    private Button buttonLoginGuess;
+    @FXML
     private Label messageLabel;
 
     //Xử lý sự kiện khi ấn Đăng nhập
@@ -93,6 +95,37 @@ public class ControllerLogin implements Initializable {
             }
         }
     }
+    //Xử lý sự kiện khi ấn Đăng nhập
+    public void clickLoginGuessButton() throws RuntimeException {
+        String userName = "guess";
+        String password = "guess";
+        messageLabel.setTextFill(Paint.valueOf("GREEN"));
+        messageLabel.setText("Đăng nhập thành công");
+        String getDataAccount = "SELECT * FROM users WHERE userName = '" + userName + "' AND pass = '" + password +"'";
+        try{
+            //Kết nối với database
+            DataBaseConnection dataBaseConnection = new DataBaseConnection();
+            Connection connection = dataBaseConnection.getConnection(userDataBase,passworDataBase);
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(getDataAccount);
+            resultSet.next();
+            ControllerLogin.taikhoan = new User(resultSet.getInt(1), userName, resultSet.getString("vaiTro"), resultSet.getString("tenNguoiDung"), resultSet.getString("ngaySinh"), resultSet.getString("gioiTinh"));
+
+            //Đóng kết nối database
+            statement.close();
+            connection.close();
+
+            //Chuyển màn hình sang màn hình home
+            Stage stage = (Stage) buttonLogin.getScene().getWindow();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/Home.fxml")));
+            Scene scene = new Scene(root, 1000, 600);
+            stage.setScene(scene);
+            stage.show();
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     //Xử lý đăng nhập khi người dùng ấn Enter
     public void pressEnter()
@@ -106,6 +139,8 @@ public class ControllerLogin implements Initializable {
         //Hiệu ứng khi di chuyển chuột vào các component
         buttonLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> buttonLogin.setEffect(new SepiaTone()));
         buttonLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> buttonLogin.setEffect(null));
+        buttonLoginGuess.addEventHandler(MouseEvent.MOUSE_MOVED,event -> buttonLoginGuess.setEffect(new SepiaTone()));
+        buttonLoginGuess.addEventHandler(MouseEvent.MOUSE_EXITED,event -> buttonLoginGuess.setEffect(null));
         userLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> userLogin.setEffect(new SepiaTone()));
         userLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> userLogin.setEffect(null));
         passLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> passLogin.setEffect(new SepiaTone()));

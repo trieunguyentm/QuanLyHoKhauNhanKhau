@@ -3,7 +3,10 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -32,7 +35,7 @@ public class ControllerHome implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Khi vừa vào Scene Home thì sẽ mặc định setCenter  = Scene Thống kê
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThongKe.fxml"));
-        Pane paneThongKe;
+        ScrollPane paneThongKe;
         try {
             paneThongKe = loader.load();
         } catch (IOException e) {
@@ -58,33 +61,53 @@ public class ControllerHome implements Initializable {
         //Set center khi click vào Thống Kê
     void clickThongKe() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ThongKe.fxml"));
-        Pane thongKe;
+        ScrollPane thongKe;
         thongKe = loader.load();
         mainPane.setCenter(thongKe);
     }
     @FXML
         //Set center khi click vào Hộ Khẩu
     void clickHoKhau() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HoKhau.fxml"));
-        Pane paneHoKhau;
-        paneHoKhau = loader.load();
-        mainPane.setCenter(paneHoKhau);
+        if (ControllerLogin.taikhoan.getVaiTro() == "Tổ Trưởng" || ControllerLogin.taikhoan.getVaiTro() == "Tổ Phó"){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HoKhau.fxml"));
+            Pane paneHoKhau;
+            paneHoKhau = loader.load();
+            mainPane.setCenter(paneHoKhau);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Tài khoản của bạn không có quyền truy cập thông tin này", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
     }
     @FXML
         //Set center khi click vào Nhân Khẩu
     void clickNhanKhau() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/NhanKhau.fxml"));
-        Pane paneNhanKhau;
-        paneNhanKhau = loader.load();
-        mainPane.setCenter(paneNhanKhau);
+        if (ControllerLogin.taikhoan.getVaiTro() == "Tổ Trưởng" || ControllerLogin.taikhoan.getVaiTro() == "Tổ Phó"){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/NhanKhau.fxml"));
+            Pane paneNhanKhau;
+            paneNhanKhau = loader.load();
+            mainPane.setCenter(paneNhanKhau);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Tài khoản của bạn không có quyền truy cập thông tin này", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
     }
     @FXML
         //Set center khi click vào Khoản Thu
     void clickKhoanThu() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KhoanThu.fxml"));
-        Pane paneKhoanThu;
-        paneKhoanThu = loader.load();
-        mainPane.setCenter(paneKhoanThu);
+        if (ControllerLogin.taikhoan.getVaiTro() == "Tổ Trưởng"
+                || ControllerLogin.taikhoan.getVaiTro() == "Tổ Phó"
+                || ControllerLogin.taikhoan.getVaiTro() == "Thư Ký"){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KhoanThu.fxml"));
+            Pane paneKhoanThu;
+            paneKhoanThu = loader.load();
+            mainPane.setCenter(paneKhoanThu);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Tài khoản của bạn không có quyền truy cập thông tin này", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
     }
     @FXML
         //Set center khi click vào Tài Khoản
