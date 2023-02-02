@@ -16,6 +16,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class TraCuuTamTru implements Initializable {
@@ -107,5 +108,15 @@ public class TraCuuTamTru implements Initializable {
         }
         btSearch.addEventHandler(MouseEvent.MOUSE_MOVED, event -> btSearch.setEffect(new SepiaTone()));
         btSearch.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btSearch.setEffect(null));
+        //Xử lý khi người dùng xóa thông tin tìm kiếm ở textfield Search
+        tfSearch.textProperty().addListener((observableValue, s, t1) -> {
+            if(Objects.equals(t1, "")) {
+                try {
+                    showTamTru();
+                } catch (ClassNotFoundException | SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }

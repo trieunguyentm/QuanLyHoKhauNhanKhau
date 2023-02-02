@@ -182,5 +182,15 @@ public class ControllerKhoanThu implements Initializable {
         btXoa.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btXoa.setEffect(null));
         btSua.addEventHandler(MouseEvent.MOUSE_MOVED, event -> btSua.setEffect(new SepiaTone()));
         btSua.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btSua.setEffect(null));
+        //Xử lý khi người dùng xóa thông tin tìm kiếm ở textfield Search
+        tfTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            if(Objects.equals(t1, "")) {
+                try {
+                    showKhoanThu();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }

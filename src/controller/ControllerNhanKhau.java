@@ -144,6 +144,16 @@ public class ControllerNhanKhau implements Initializable{
         btBaoTu.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btBaoTu.setEffect(null));
         btSuaThongTin.addEventHandler(MouseEvent.MOUSE_MOVED, event -> btSuaThongTin.setEffect(new SepiaTone()));
         btSuaThongTin.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btSuaThongTin.setEffect(null));
+        //Xử lý khi người dùng xóa thông tin tìm kiếm ở textfield Search
+        tfSearch.textProperty().addListener((observableValue, s, t1) -> {
+            if(Objects.equals(t1, "")) {
+                try {
+                    showNhanKhau();
+                } catch (ClassNotFoundException | SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     @FXML
