@@ -38,8 +38,8 @@ public class ControllerHoKhau implements Initializable {
     private Button btDoiChuHo;
     @FXML
     private Button btChuyenHo;
-
-
+    @FXML
+    private TextField tfSearch;
     // Event Listener on Button[#tfTachKhau].onAction
     //render ra view Tách Khẩu, ủy quyền tách khẩu cho view này
     @FXML
@@ -93,8 +93,6 @@ public class ControllerHoKhau implements Initializable {
         colMaChuHo.setCellValueFactory(new PropertyValueFactory<>("maChuHo"));
         tvHoKhau.setItems(listValueTableView);
     }
-
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
@@ -110,11 +108,19 @@ public class ControllerHoKhau implements Initializable {
         btDoiChuHo.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btDoiChuHo.setEffect(null));
         btChuyenHo.addEventHandler(MouseEvent.MOUSE_MOVED, event -> btChuyenHo.setEffect(new SepiaTone()));
         btChuyenHo.addEventHandler(MouseEvent.MOUSE_EXITED, event -> btChuyenHo.setEffect(null));
+        //Xử lý khi người dùng xóa thông tin tìm kiếm ở textfield Search
+        tfSearch.textProperty().addListener((observableValue, s, t1) -> {
+            if(Objects.equals(t1, "")) {
+                try {
+                    showHoKhau();
+                } catch (ClassNotFoundException | SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     //search function
-    @FXML
-    private TextField tfSearch;
     //private ObservableList<TamTru> listValueTableView;
     @FXML
     public void search() throws SQLException {
