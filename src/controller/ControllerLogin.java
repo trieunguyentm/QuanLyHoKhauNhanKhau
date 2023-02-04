@@ -146,6 +146,8 @@ public class ControllerLogin implements Initializable {
         passLogin.addEventHandler(MouseEvent.MOUSE_MOVED,event -> passLogin.setEffect(new SepiaTone()));
         passLogin.addEventHandler(MouseEvent.MOUSE_EXITED,event -> passLogin.setEffect(null));
         //Tooltip
+        userLogin.setText("admin");
+        passLogin.setText("admin");
         userLogin.setTooltip(new Tooltip("Nhập thông tin tài khoản"));
         passLogin.setTooltip(new Tooltip("Nhập thông tin mật khẩu"));
     }

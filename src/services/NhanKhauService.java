@@ -11,6 +11,22 @@ import java.util.List;
 
 public class NhanKhauService{
 
+    public String getInfOfHomeOwner(String maHo) throws SQLException {
+        //get connection
+        DataBaseConnection connectionToDB = new DataBaseConnection();
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
+
+        String ngaySinh = null;
+        String getMaHoQuery = "select ngaySinh from nhan_khau where maHo = " + "'" + maHo+"'" + "and quanHeVoiChuHo = N'chủ hộ'";
+        PreparedStatement stmGetNgaySinh = connection.prepareStatement(getMaHoQuery);
+        ResultSet rs = stmGetNgaySinh.executeQuery();
+        while (rs.next()) {
+            ngaySinh = rs.getString("ngaySinh");
+        }
+        stmGetNgaySinh.close();
+        connection.close();
+        return ngaySinh;
+    }
     // phương thức phục vụ mục đích thêm người vào bảng nhan_khau
     public void add(NhanKhau nhanKhauModel) throws SQLException {
         //get connection

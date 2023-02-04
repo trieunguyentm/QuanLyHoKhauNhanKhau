@@ -18,6 +18,7 @@ import services.NhanKhauService;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -44,6 +45,7 @@ public class ThemNhanKhau implements Initializable {
     // Event Listener on Button.onAction
     @FXML
     public void add(ActionEvent event) throws SQLException {
+
         //kiểm tra dữ liệu đầu vào có hợp lệ
         if(!check()) return;
         //nếu hợp lệ, lấy dữ liệu đó
@@ -70,7 +72,8 @@ public class ThemNhanKhau implements Initializable {
         stage.close();
     }
 
-    public boolean check() {
+    public boolean check() throws SQLException {
+
         //TODO: khoảng trắng vẫn có thể nhập không thông qua pattern
         Pattern pattern;
         // kiem tra ma nguoi nhap vao
@@ -91,7 +94,7 @@ public class ThemNhanKhau implements Initializable {
             return false;
         }
         //check gioitinh
-        if(!(tfGioiTinh.getText().equals("Nam") || tfGioiTinh.getText().equals("Nu"))) {
+        if(!(tfGioiTinh.getText().equals("Nam") || tfGioiTinh.getText().equals("Nữ"))) {
             Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào giới tính hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
@@ -105,6 +108,19 @@ public class ThemNhanKhau implements Initializable {
             alert.showAndWait();
             return false;
         }
+
+        //checjk ngày sinh
+        String dateBirthOfBoss = new NhanKhauService().getInfOfHomeOwner(tfMaHo.getText());
+        if(tfQuanHeVoiChuHo.getText().toLowerCase().contains("con") || tfQuanHeVoiChuHo.getText().toLowerCase().contains("cháu")) {
+            if(Integer.parseInt(dateBirthOfBoss.substring(0, 4)) + 10 >= Integer.parseInt(tfNgaySinh.getText().substring(0, 4))) {
+                Alert alert = new Alert(AlertType.WARNING, "năm sinh của con/cháu không thể nhỏ hơn năm sinh của chủ", ButtonType.OK);
+                alert.setHeaderText(null);
+                alert.showAndWait();
+                return false;
+            }
+        }
+
+
         pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
         if (!pattern.matcher(tfMaHo.getText()).matches()) {
             Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã hộ hợp lệ!", ButtonType.OK);
@@ -131,6 +147,24 @@ public class ThemNhanKhau implements Initializable {
             alert.showAndWait();
             return false;
         }
+        // check gái/ trai
+        if(tfGioiTinh.getText().equals("Nam")) {
+            if(tfQuanHeVoiChuHo.getText().contains("gái") ||  tfQuanHeVoiChuHo.getText().contains("vợ") || tfQuanHeVoiChuHo.getText().contains("bà")){
+                Alert alert = new Alert(AlertType.WARNING, "giới tính - quan hệ không phù hợp: giới tính là nam", ButtonType.OK);
+                alert.setHeaderText(null);
+                alert.showAndWait();
+                return false;
+            }
+        }
+        else {
+            if(tfQuanHeVoiChuHo.getText().contains("trai") ||  tfQuanHeVoiChuHo.getText().contains("chồng") || tfQuanHeVoiChuHo.getText().contains("ông")) {
+                Alert alert = new Alert(AlertType.WARNING, "giới tính - quan hệ không phù hợp: giới tính đã nhập là nữ", ButtonType.OK);
+                alert.setHeaderText(null);
+                alert.showAndWait();
+                return false;
+            }
+        }
+
         return true;
     }
 
