@@ -49,6 +49,22 @@
                   </Pane>
                </graphic>
             </Button>
+            <Button fx:id="dinhChinh" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" onAction="#clickDinhChinh" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #36d5ff; -fx-border-width: 1px 2px 1px 2px; -fx-text-fill: #36d5ff; -fx-background-color: #ffffff;" text="Đính chính">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+               <graphic>
+                  <Pane prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="24.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/nhankhau.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </graphic>
+            </Button>
             <Button fx:id="khoanThu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickKhoanThu" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #36d5ff; -fx-border-width: 1px 2px 1px 2px; -fx-text-fill: #36d5ff; -fx-background-color: #ffffff;" text="Khoản Thu">
                <font>
                   <Font name="Arial Bold" size="16.0" />
@@ -67,9 +83,8 @@
                </font>
                <graphic>
                   <Pane prefHeight="100.0" prefWidth="200.0">
-                     <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true"
-                                preserveRatio="true">
-                        <Image url="@../image/article.png"/>
+                     <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../image/article.png" />
                      </ImageView>
                   </Pane>
                </graphic>

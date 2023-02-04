@@ -61,10 +61,10 @@ public class HoKhauService {
         Statement stm = connection.createStatement();
         stm.executeUpdate(query);
         //cập nhật vai trò của chủ mới là chuHo
-        String query2 = "UPDATE nhan_khau " + "set quanHeVoiChuHo = 'chuHo' " + ", ghiChu = 'can xac minh quan he cua ho nay' " + "where maNhanKhau =" + "'" +maChuMoi+"'";
+        String query2 = "UPDATE nhan_khau " + "set quanHeVoiChuHo = N'Chủ Hộ' " + ", ghiChu = N'Cần xác minh quan hệ của hộ này' " + "where maNhanKhau =" + "'" +maChuMoi+"'";
         stm.executeUpdate(query2);
         //cập nhật vai trò của chủ cũ là chuHoCu
-        String query3 = "UPDATE nhan_khau " + "set quanHeVoiChuHo = 'chuHoCu' " + "where maNhanKhau =" + "'" +maChuCu+"'";
+        String query3 = "UPDATE nhan_khau " + "set quanHeVoiChuHo = N'Chủ Hộ Cũ' " + "where maNhanKhau =" + "'" +maChuCu+"'";
         stm.executeUpdate(query3);
 
         //ghi nhận lịch sử thay đổi

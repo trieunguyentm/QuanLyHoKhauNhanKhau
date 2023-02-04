@@ -1,5 +1,6 @@
 package services;
 
+import controller.ControllerLogin;
 import main.DataBaseConnection;
 
 import java.sql.Connection;
@@ -13,7 +14,7 @@ public class Util {
     public static void getHistoryQuery(String maHo, String typeOfChange, String from, String to, String nguoiThayDoi ) throws SQLException {
         //connection to db
         DataBaseConnection connectionToDB = new DataBaseConnection();
-        Connection connection = connectionToDB.getConnection(null, null);
+        Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
         //get date
         LocalDate dateObj = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

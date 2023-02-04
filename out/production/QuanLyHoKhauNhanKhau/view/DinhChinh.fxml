@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: CCFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controller.ControllerDinhChinh">
+   <children>
+      <TableView fx:id="tvDinhChinh" layoutX="20.0" layoutY="136.0" prefHeight="642.0" prefWidth="560.0">
+        <columns>
+          <TableColumn prefWidth="44.0" text="Mã hộ" />
+            <TableColumn prefWidth="132.79998779296875" text="Thông Tin Thay Đổi" />
+            <TableColumn prefWidth="79.20001220703125" text="Thay Đổi Từ" />
+            <TableColumn prefWidth="101.60003662109375" text="Thay Đổi Thành" />
+            <TableColumn prefWidth="86.39996337890625" text="Ngày thay đổi" />
+            <TableColumn prefWidth="114.40008544921875" text="Người thay đổi" />
+        </columns>
+      </TableView>
+      <Label layoutX="235.0" layoutY="35.0" style="-fx-text-fill: #36d5ff;" text="Đính chính">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfSearch" layoutX="20.0" layoutY="88.0" promptText="Nhập mã hộ khẩu" />
+      <Button layoutX="198.0" layoutY="88.0" mnemonicParsing="false" onAction="#search" text="Search" />
+   </children>
+</AnchorPane>

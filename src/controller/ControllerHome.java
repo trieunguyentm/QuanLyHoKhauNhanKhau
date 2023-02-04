@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ControllerHome implements Initializable {
@@ -23,6 +24,8 @@ public class ControllerHome implements Initializable {
     private Button hoKhau;
     @FXML
     private Button nhanKhau;
+    @FXML
+    private Button dinhChinh;
     @FXML
     private Button khoanThu;
     @FXML
@@ -50,6 +53,8 @@ public class ControllerHome implements Initializable {
         hoKhau.addEventHandler(MouseEvent.MOUSE_EXITED, event -> hoKhau.setEffect(null));
         nhanKhau.addEventHandler(MouseEvent.MOUSE_MOVED, event -> nhanKhau.setEffect(new SepiaTone()));
         nhanKhau.addEventHandler(MouseEvent.MOUSE_EXITED, event -> nhanKhau.setEffect(null));
+        dinhChinh.addEventHandler(MouseEvent.MOUSE_MOVED, event -> dinhChinh.setEffect(new SepiaTone()));
+        dinhChinh.addEventHandler(MouseEvent.MOUSE_EXITED, event -> dinhChinh.setEffect(null));
         khoanThu.addEventHandler(MouseEvent.MOUSE_MOVED, event -> khoanThu.setEffect(new SepiaTone()));
         khoanThu.addEventHandler(MouseEvent.MOUSE_EXITED, event -> khoanThu.setEffect(null));
         taiKhoan.addEventHandler(MouseEvent.MOUSE_MOVED, event -> taiKhoan.setEffect(new SepiaTone()));
@@ -68,7 +73,8 @@ public class ControllerHome implements Initializable {
     @FXML
         //Set center khi click vào Hộ Khẩu
     void clickHoKhau() throws IOException {
-        if (ControllerLogin.taikhoan.getVaiTro() == "Tổ Trưởng" || ControllerLogin.taikhoan.getVaiTro() == "Tổ Phó"){
+        System.out.println(ControllerLogin.taikhoan.getVaiTro());
+        if (Objects.equals(ControllerLogin.taikhoan.getVaiTro(), "Tổ Trưởng") || Objects.equals(ControllerLogin.taikhoan.getVaiTro() ,"Tổ Phó")){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HoKhau.fxml"));
             Pane paneHoKhau;
             paneHoKhau = loader.load();
@@ -82,7 +88,7 @@ public class ControllerHome implements Initializable {
     @FXML
         //Set center khi click vào Nhân Khẩu
     void clickNhanKhau() throws IOException {
-        if (ControllerLogin.taikhoan.getVaiTro() == "Tổ Trưởng" || ControllerLogin.taikhoan.getVaiTro() == "Tổ Phó"){
+        if  (Objects.equals(ControllerLogin.taikhoan.getVaiTro(), "Tổ Trưởng") || Objects.equals(ControllerLogin.taikhoan.getVaiTro() ,"Tổ Phó")){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/NhanKhau.fxml"));
             Pane paneNhanKhau;
             paneNhanKhau = loader.load();
@@ -94,11 +100,24 @@ public class ControllerHome implements Initializable {
         }
     }
     @FXML
+    void clickDinhChinh() throws IOException {
+        if  (Objects.equals(ControllerLogin.taikhoan.getVaiTro(), "Tổ Trưởng") || Objects.equals(ControllerLogin.taikhoan.getVaiTro() ,"Tổ Phó")){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DinhChinh.fxml"));
+            Pane paneDinhChinh;
+            paneDinhChinh = loader.load();
+            mainPane.setCenter(paneDinhChinh);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Tài khoản của bạn không có quyền truy cập thông tin này", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+    }
+    @FXML
         //Set center khi click vào Khoản Thu
     void clickKhoanThu() throws IOException {
-        if (ControllerLogin.taikhoan.getVaiTro() == "Tổ Trưởng"
-                || ControllerLogin.taikhoan.getVaiTro() == "Tổ Phó"
-                || ControllerLogin.taikhoan.getVaiTro() == "Thư Ký"){
+        if  (Objects.equals(ControllerLogin.taikhoan.getVaiTro(), "Tổ Trưởng")
+                || Objects.equals(ControllerLogin.taikhoan.getVaiTro() ,"Tổ Phó")
+                || Objects.equals(ControllerLogin.taikhoan.getVaiTro() , "Thư Ký")){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KhoanThu.fxml"));
             Pane paneKhoanThu;
             paneKhoanThu = loader.load();
