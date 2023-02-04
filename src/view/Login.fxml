@@ -25,6 +25,11 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <Button fx:id="buttonLoginGuess" maxWidth="-Infinity" layoutX="60.0" layoutY="301.0" mnemonicParsing="false" onAction="#clickLoginGuessButton" prefHeight="30.0" prefWidth="240.0" style="-fx-background-radius: 0px; -fx-border-color: #36d5ff; -fx-background-color: #EEEEEE;" text="Đăng nhập vào tài khoản khách" textFill="#36d5ff">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
       <Label layoutX="88.0" layoutY="68.0" prefHeight="58.0" prefWidth="184.0" text="ĐĂNG NHẬP" textFill="#36d5ff">
          <font>
             <Font name="System Bold" size="30.0" />
