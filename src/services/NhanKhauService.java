@@ -79,7 +79,7 @@ public class NhanKhauService{
         connection.close();
     }
     //lấy danh sách dữ liệu là một list object của đối tượng NhanKhau
-    public List<NhanKhau> getListNhanKhau() throws SQLException {
+    public static List<NhanKhau> getListNhanKhau() throws SQLException {
         List<NhanKhau> list = new ArrayList<>();
         DataBaseConnection connectionToDB = new DataBaseConnection();
         Connection connection = connectionToDB.getConnection(ControllerLogin.userDataBase, ControllerLogin.passworDataBase);
