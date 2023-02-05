@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="TESTFX">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/TESTFX" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/Downloads/TESTFX" recursive="false" />
+  </library>
+</component>

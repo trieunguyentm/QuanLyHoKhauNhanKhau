@@ -26,14 +26,34 @@ public class ControllerLogin implements Initializable {
     public static final String userDataBase = "sa";
     public static final String passworDataBase = "123456";
     public static User taikhoan;
+
+    public TextField getUserLogin() {
+        return userLogin;
+    }
+
     @FXML
     private TextField userLogin;
     @FXML
     private PasswordField passLogin;
+
+    public Button getButtonLogin() {
+        return buttonLogin;
+    }
+
     @FXML
     private Button buttonLogin;
+
+    public Button getButtonLoginGuess() {
+        return buttonLoginGuess;
+    }
+
     @FXML
     private Button buttonLoginGuess;
+
+    public Label getMessageLabel() {
+        return messageLabel;
+    }
+
     @FXML
     private Label messageLabel;
 
