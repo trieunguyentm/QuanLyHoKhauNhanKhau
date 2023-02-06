@@ -5,11 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -18,7 +15,7 @@ import services.NhanKhauService;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Locale;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -30,7 +27,7 @@ public class ThemNhanKhau implements Initializable {
     @FXML
     private TextField tfGioiTinh;
     @FXML
-    private TextField tfNgaySinh;
+    private DatePicker tfNgaySinh;
     @FXML
     private TextField tfQueQuan;
     @FXML
@@ -52,7 +49,7 @@ public class ThemNhanKhau implements Initializable {
         String ma = tfMaNhanKhau.getText();
         String hoTen = tfHoTen.getText();
         String gioiTinh = tfGioiTinh.getText();
-        String ngaySinh = tfNgaySinh.getText();
+        String ngaySinh = tfNgaySinh.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String queQuan = tfQueQuan.getText();
         String ngheNgiep = tfNgheNghiep.getText();
         String maHo = tfMaHo.getText();
@@ -102,7 +99,7 @@ public class ThemNhanKhau implements Initializable {
         }
         //regex ngaysinh
         pattern = Pattern.compile("([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))");
-        if (!pattern.matcher(tfNgaySinh.getText()).matches()) {
+        if (!pattern.matcher(tfNgaySinh.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))).matches()) {
             Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ngày hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
@@ -112,7 +109,7 @@ public class ThemNhanKhau implements Initializable {
         //checjk ngày sinh
         String dateBirthOfBoss = new NhanKhauService().getInfOfHomeOwner(tfMaHo.getText());
         if(tfQuanHeVoiChuHo.getText().toLowerCase().contains("con") || tfQuanHeVoiChuHo.getText().toLowerCase().contains("cháu")) {
-            if(Integer.parseInt(dateBirthOfBoss.substring(0, 4)) + 10 >= Integer.parseInt(tfNgaySinh.getText().substring(0, 4))) {
+            if(Integer.parseInt(dateBirthOfBoss.substring(0, 4)) + 10 >= Integer.parseInt(tfNgaySinh.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).substring(0, 4))) {
                 Alert alert = new Alert(AlertType.WARNING, "năm sinh của con/cháu không thể nhỏ hơn năm sinh của chủ", ButtonType.OK);
                 alert.setHeaderText(null);
                 alert.showAndWait();

@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -15,6 +12,7 @@ import model.KhaiTu;
 import services.NhanKhauService;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -26,7 +24,7 @@ public class KhaiTuController implements Initializable {
     @FXML
     private TextField tfLyDoChet;
     @FXML
-    private TextField tfNgayKhai;
+    private DatePicker tfNgayKhai;
     @FXML
     private Button khaiBao;
 
@@ -39,7 +37,7 @@ public class KhaiTuController implements Initializable {
         String maNguoiChet = tfMaNguoiChet.getText();
         String maNguoiKhau = tfMaNguoiKhai.getText();
         String LyDoChet = tfLyDoChet.getText();
-        String NgayKhai = tfNgayKhai.getText();
+        String NgayKhai = tfNgayKhai.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         //tạo khai tử object, truyền vào class service để thực hiện thao tác với database
         try {
             KhaiTu baotu = new KhaiTu(maNguoiKhau, maNguoiChet, NgayKhai, LyDoChet);

@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -16,6 +13,8 @@ import services.KhoanThuService;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -29,7 +28,7 @@ public class ControllerSuaKhoanThu implements Initializable {
     @FXML
     private TextField tfMaHo;
     @FXML
-    private TextField tfNgayNop;
+    private DatePicker tfNgayNop;
     @FXML
     private Button btXacNhan;
     public void setKhoanThu(KhoanThu khoanThuModel) {
@@ -37,7 +36,7 @@ public class ControllerSuaKhoanThu implements Initializable {
         tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
         tfSoTien.setText(khoanThuModel.getSoTienCanThu());
         tfMaHo.setText(khoanThuModel.getMaHo());
-        tfNgayNop.setText(khoanThuModel.getNgayNop());
+        tfNgayNop.setValue(LocalDate.parse(khoanThuModel.getNgayNop()));
     }
     @FXML
     public void update(ActionEvent event) throws SQLException {
@@ -51,7 +50,7 @@ public class ControllerSuaKhoanThu implements Initializable {
         {
             //thao tác đến database để update người đc chọn
             try {
-                new KhoanThuService().update(tfMaKhoanThu.getText(), tfTenKhoanThu.getText(), tfSoTien.getText(), tfMaHo.getText(), tfNgayNop.getText());
+                new KhoanThuService().update(tfMaKhoanThu.getText(), tfTenKhoanThu.getText(), tfSoTien.getText(), tfMaHo.getText(), tfNgayNop.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             }
             catch (Exception e) {
                 Alert alert1 = new Alert(Alert.AlertType.WARNING, "Hãy nhập vào thông tin chính xác!", ButtonType.OK);

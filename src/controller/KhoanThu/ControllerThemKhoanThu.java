@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -16,6 +13,7 @@ import services.KhoanThuService;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -29,7 +27,7 @@ public class ControllerThemKhoanThu implements Initializable {
     @FXML
     private TextField tfMaHo;
     @FXML
-    private TextField tfNgayNop;
+    private DatePicker tfNgayNop;
     @FXML
     private Button btXacNhan;
     public boolean check()
@@ -38,7 +36,7 @@ public class ControllerThemKhoanThu implements Initializable {
         String tenKhoanThu = tfTenKhoanThu.getText();
         String soTien = tfSoTien.getText();
         String maHo = tfMaHo.getText();
-        String ngayNop = tfNgayNop.getText();
+        String ngayNop = tfNgayNop.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return !Objects.equals(maKhoanThu, "") && !Objects.equals(tenKhoanThu, "") && !Objects.equals(soTien, "") && !Objects.equals(maHo, "") && !Objects.equals(ngayNop, "");
     }
     @FXML
@@ -53,7 +51,7 @@ public class ControllerThemKhoanThu implements Initializable {
         String tenKhoanThu = tfTenKhoanThu.getText();
         String soTien = tfSoTien.getText();
         String maHo = tfMaHo.getText();
-        String ngayNop = tfNgayNop.getText();
+        String ngayNop = tfNgayNop.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         //thêm khoản thu
         KhoanThu khoanThu = new KhoanThu(maKhoanThu, tenKhoanThu, soTien, maHo, ngayNop);
         new KhoanThuService().add(khoanThu);
