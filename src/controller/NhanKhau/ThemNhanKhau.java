@@ -25,7 +25,7 @@ public class ThemNhanKhau implements Initializable {
     @FXML
     private TextField tfHoTen;
     @FXML
-    private TextField tfGioiTinh;
+    private ComboBox<String> tfGioiTinh;
     @FXML
     private DatePicker tfNgaySinh;
     @FXML
@@ -48,7 +48,7 @@ public class ThemNhanKhau implements Initializable {
         //nếu hợp lệ, lấy dữ liệu đó
         String ma = tfMaNhanKhau.getText();
         String hoTen = tfHoTen.getText();
-        String gioiTinh = tfGioiTinh.getText();
+        String gioiTinh = tfGioiTinh.getValue();
         String ngaySinh = tfNgaySinh.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String queQuan = tfQueQuan.getText();
         String ngheNgiep = tfNgheNghiep.getText();
@@ -91,7 +91,7 @@ public class ThemNhanKhau implements Initializable {
             return false;
         }
         //check gioitinh
-        if(!(tfGioiTinh.getText().equals("Nam") || tfGioiTinh.getText().equals("Nữ"))) {
+        if(!(tfGioiTinh.getValue().equals("Nam") || tfGioiTinh.getValue().equals("Nữ"))) {
             Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào giới tính hợp lệ!", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
@@ -145,7 +145,7 @@ public class ThemNhanKhau implements Initializable {
             return false;
         }
         // check gái/ trai
-        if(tfGioiTinh.getText().equals("Nam")) {
+        if(tfGioiTinh.getValue().equals("Nam")) {
             if(tfQuanHeVoiChuHo.getText().contains("gái") ||  tfQuanHeVoiChuHo.getText().contains("vợ") || tfQuanHeVoiChuHo.getText().contains("bà")){
                 Alert alert = new Alert(AlertType.WARNING, "giới tính - quan hệ không phù hợp: giới tính là nam", ButtonType.OK);
                 alert.setHeaderText(null);
@@ -167,6 +167,7 @@ public class ThemNhanKhau implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tfGioiTinh.getItems().addAll("Nam", "Nữ");
         xacNhanThongTin.addEventHandler(MouseEvent.MOUSE_MOVED, event -> xacNhanThongTin.setEffect(new SepiaTone()));
         xacNhanThongTin.addEventHandler(MouseEvent.MOUSE_EXITED, event -> xacNhanThongTin.setEffect(null));
     }
